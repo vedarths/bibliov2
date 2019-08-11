@@ -17,6 +17,10 @@
 		BE3A079D23009C8B00CD956B /* BiblioV2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A079C23009C8B00CD956B /* BiblioV2UITests.swift */; };
 		BE3A07AC2300A75E00CD956B /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07AB2300A75E00CD956B /* SearchResultsViewController.swift */; };
 		BE3A07AE2300A7EA00CD956B /* MyLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07AD2300A7EA00CD956B /* MyLibraryViewController.swift */; };
+		BE3A07B12300AD5800CD956B /* BookClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07B02300AD5800CD956B /* BookClient.swift */; };
+		BE3A07B32300AD6600CD956B /* BookConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07B22300AD6600CD956B /* BookConstants.swift */; };
+		BE3A07B52300AD7500CD956B /* BookClientOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07B42300AD7500CD956B /* BookClientOperations.swift */; };
+		BE3A07B82300AE1800CD956B /* BookVolumeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07B72300AE1800CD956B /* BookVolumeParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		BE3A079E23009C8B00CD956B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE3A07AB2300A75E00CD956B /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		BE3A07AD2300A7EA00CD956B /* MyLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryViewController.swift; sourceTree = "<group>"; };
+		BE3A07B02300AD5800CD956B /* BookClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookClient.swift; sourceTree = "<group>"; };
+		BE3A07B22300AD6600CD956B /* BookConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookConstants.swift; sourceTree = "<group>"; };
+		BE3A07B42300AD7500CD956B /* BookClientOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookClientOperations.swift; sourceTree = "<group>"; };
+		BE3A07B72300AE1800CD956B /* BookVolumeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookVolumeParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,8 @@
 		BE3A076D23009C8A00CD956B = {
 			isa = PBXGroup;
 			children = (
+				BE3A07B62300ADFA00CD956B /* Models */,
+				BE3A07AF2300AD2100CD956B /* Clients */,
 				BE3A07AA23009D1700CD956B /* ViewControllers */,
 				BE3A077823009C8A00CD956B /* BiblioV2 */,
 				BE3A079023009C8B00CD956B /* BiblioV2Tests */,
@@ -140,6 +150,24 @@
 				BE3A07AD2300A7EA00CD956B /* MyLibraryViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BE3A07AF2300AD2100CD956B /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				BE3A07B02300AD5800CD956B /* BookClient.swift */,
+				BE3A07B22300AD6600CD956B /* BookConstants.swift */,
+				BE3A07B42300AD7500CD956B /* BookClientOperations.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		BE3A07B62300ADFA00CD956B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE3A07B72300AE1800CD956B /* BookVolumeParser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,10 +302,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE3A078223009C8A00CD956B /* BiblioV2.xcdatamodeld in Sources */,
+				BE3A07B82300AE1800CD956B /* BookVolumeParser.swift in Sources */,
+				BE3A07B12300AD5800CD956B /* BookClient.swift in Sources */,
 				BE3A07AC2300A75E00CD956B /* SearchResultsViewController.swift in Sources */,
+				BE3A07B52300AD7500CD956B /* BookClientOperations.swift in Sources */,
 				BE3A07AE2300A7EA00CD956B /* MyLibraryViewController.swift in Sources */,
 				BE3A077C23009C8A00CD956B /* SearchBookViewController.swift in Sources */,
 				BE3A077A23009C8A00CD956B /* AppDelegate.swift in Sources */,
+				BE3A07B32300AD6600CD956B /* BookConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

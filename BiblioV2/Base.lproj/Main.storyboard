@@ -110,7 +110,7 @@
                                             <navigationItem title="Search Results" id="Kum-Us-OlM">
                                                 <barButtonItem key="leftBarButtonItem" title="Back" id="pkp-hC-3aw">
                                                     <connections>
-                                                        <segue destination="bUs-XA-qgv" kind="presentation" id="GRN-J2-TqV"/>
+                                                        <segue destination="vWO-sh-phB" kind="show" id="cHk-Po-ZzM"/>
                                                     </connections>
                                                 </barButtonItem>
                                             </navigationItem>
@@ -201,6 +201,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GRN-J2-TqV"/>
+        <segue reference="cHk-Po-ZzM"/>
     </inferredMetricsTieBreakers>
 </document>
