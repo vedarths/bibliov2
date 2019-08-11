@@ -11,7 +11,10 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
     
+    var items: [BookItem]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("items size is \(items?.count)")
     }
 }

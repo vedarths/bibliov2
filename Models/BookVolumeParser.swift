@@ -26,16 +26,16 @@ struct BookItem: Codable {
 
 struct VolumeInfo: Codable {
     let title: String
-    let subtitle: String
+//    let subtitle: String
     let authors: [String]
     let publisher: String
     let publishedDate: String
     let description: String
-    let industryIdentifiers: [IndustryIdentifiers]
+//    let industryIdentifiers: [IndustryIdentifiers]
     let pageCount : Int
-    let categories: [String]
-    let averageRating: Double
-    let ratingsCount: Int
+//    let categories: [String]
+//    let averageRating: Double
+//    let ratingsCount: Int
     let imageLinks: ImageLinks
     let language: String
     let previewLink: String

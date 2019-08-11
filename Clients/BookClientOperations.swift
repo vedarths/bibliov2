@@ -15,7 +15,7 @@ extension BookClient {
         //get any random page
         
         let parameters = [
-            BookParameterKeys.Format         : BookParameterValues.ResponseFormat
+            "q"        : title
         ]
         
         _ = taskForGETMethod(parameters: parameters as [String : AnyObject]) { (data, error) in

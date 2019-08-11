@@ -15,7 +15,7 @@
             <objects>
                 <navigationController title="Biblio" id="hnD-qk-dmx" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HKe-Vc-e3o">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -68,9 +68,7 @@
                                             <color key="titleColor" red="0.14415302535847047" green="0.32827804592097665" blue="0.72172337770462036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="eSc-9g-P8E" kind="popoverPresentation" popoverAnchorView="9Qk-c7-3R8" id="Tim-1F-70j">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
+                                            <action selector="doSearch:" destination="bUs-XA-qgv" eventType="touchUpInside" id="5Rx-dy-nf8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -88,15 +86,19 @@
                         <viewLayoutGuide key="safeArea" id="Sd5-EP-gsr"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="gs2-hr-h3i" userLabel="Search"/>
+                    <connections>
+                        <outlet property="searchButton" destination="9Qk-c7-3R8" id="fih-sH-99e"/>
+                        <outlet property="titleTextField" destination="xbH-iz-554" id="rQL-w1-VSv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lJ0-BS-7um" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1233" y="-321"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Results View Controller-->
         <scene sceneID="wSx-Wn-LS3">
             <objects>
-                <viewController id="eSc-9g-P8E" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eSc-9g-P8E" customClass="SearchResultsViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qfo-HK-N72">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
