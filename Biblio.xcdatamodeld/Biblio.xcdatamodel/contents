@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Book" representedClassName="Book" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lender" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Person" inverseName="owes" inverseEntity="Person" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Person" inverseName="owns" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="Person" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Book" inverseName="lender" inverseEntity="Book" syncable="YES"/>
+        <relationship name="owns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Book" inverseName="owner" inverseEntity="Book" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Book" positionX="-36.17578125" positionY="-52.3984375" width="128" height="133"/>
+        <element name="Person" positionX="738.59765625" positionY="-65.68359375" width="128" height="118"/>
+    </elements>
+</model>
