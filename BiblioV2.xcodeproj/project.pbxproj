@@ -22,6 +22,8 @@
 		BE3A07B52300AD7500CD956B /* BookClientOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07B42300AD7500CD956B /* BookClientOperations.swift */; };
 		BE3A07B82300AE1800CD956B /* BookVolumeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07B72300AE1800CD956B /* BookVolumeParser.swift */; };
 		BE7596DF2300B04400D68580 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596DE2300B04400D68580 /* BookCell.swift */; };
+		BE7596E12301D8A100D68580 /* GCDBlackbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596E02301D8A100D68580 /* GCDBlackbox.swift */; };
+		BE7596E32301DBA100D68580 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596E22301DBA100D68580 /* ViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		BE3A07B42300AD7500CD956B /* BookClientOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookClientOperations.swift; sourceTree = "<group>"; };
 		BE3A07B72300AE1800CD956B /* BookVolumeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookVolumeParser.swift; sourceTree = "<group>"; };
 		BE7596DE2300B04400D68580 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		BE7596E02301D8A100D68580 /* GCDBlackbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackbox.swift; sourceTree = "<group>"; };
+		BE7596E22301DBA100D68580 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		BE3A076D23009C8A00CD956B = {
 			isa = PBXGroup;
 			children = (
+				BE7596E02301D8A100D68580 /* GCDBlackbox.swift */,
 				BE7596DD2300B02D00D68580 /* View */,
 				BE3A07B62300ADFA00CD956B /* Models */,
 				BE3A07AF2300AD2100CD956B /* Clients */,
@@ -151,6 +156,7 @@
 				BE3A077B23009C8A00CD956B /* SearchBookViewController.swift */,
 				BE3A07AB2300A75E00CD956B /* SearchResultsViewController.swift */,
 				BE3A07AD2300A7EA00CD956B /* MyLibraryViewController.swift */,
+				BE7596E22301DBA100D68580 /* ViewController+Extensions.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -315,6 +321,8 @@
 				BE3A078223009C8A00CD956B /* BiblioV2.xcdatamodeld in Sources */,
 				BE3A07B82300AE1800CD956B /* BookVolumeParser.swift in Sources */,
 				BE3A07B12300AD5800CD956B /* BookClient.swift in Sources */,
+				BE7596E12301D8A100D68580 /* GCDBlackbox.swift in Sources */,
+				BE7596E32301DBA100D68580 /* ViewController+Extensions.swift in Sources */,
 				BE3A07AC2300A75E00CD956B /* SearchResultsViewController.swift in Sources */,
 				BE7596DF2300B04400D68580 /* BookCell.swift in Sources */,
 				BE3A07B52300AD7500CD956B /* BookClientOperations.swift in Sources */,

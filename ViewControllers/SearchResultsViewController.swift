@@ -17,4 +17,6 @@ class SearchResultsViewController: UIViewController {
         super.viewDidLoad()
         print("items size is \(items?.count)")
     }
+    
+    
 }
