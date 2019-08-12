@@ -24,6 +24,12 @@
 		BE7596E12301D8A100D68580 /* GCDBlackbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596E02301D8A100D68580 /* GCDBlackbox.swift */; };
 		BE7596E32301DBA100D68580 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596E22301DBA100D68580 /* ViewController+Extensions.swift */; };
 		BE7596E62301F8C000D68580 /* Biblio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE7596E42301F8C000D68580 /* Biblio.xcdatamodeld */; };
+		BE7596EC2301FB6A00D68580 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596EB2301FB6A00D68580 /* DataController.swift */; };
+		BE7596EE2301FB7700D68580 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596ED2301FB7700D68580 /* CoreDataHelper.swift */; };
+		BE7596F12301FC5D00D68580 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596F02301FC5D00D68580 /* Book.swift */; };
+		BE7596F32301FCBA00D68580 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596F22301FCBA00D68580 /* Person.swift */; };
+		BE7596F52301FF7300D68580 /* Person +  CustomProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596F42301FF7300D68580 /* Person +  CustomProperties.swift */; };
+		BE7596F72301FF8100D68580 /* Book + CustomProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596F62301FF8100D68580 /* Book + CustomProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +73,12 @@
 		BE7596E02301D8A100D68580 /* GCDBlackbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackbox.swift; sourceTree = "<group>"; };
 		BE7596E22301DBA100D68580 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
 		BE7596E52301F8C000D68580 /* Biblio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Biblio.xcdatamodel; sourceTree = "<group>"; };
+		BE7596EB2301FB6A00D68580 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		BE7596ED2301FB7700D68580 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		BE7596F02301FC5D00D68580 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		BE7596F22301FCBA00D68580 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		BE7596F42301FF7300D68580 /* Person +  CustomProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person +  CustomProperties.swift"; sourceTree = "<group>"; };
+		BE7596F62301FF8100D68580 /* Book + CustomProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book + CustomProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,7 @@
 		BE3A076D23009C8A00CD956B = {
 			isa = PBXGroup;
 			children = (
+				BE7596E72301FB3700D68580 /* Core Data */,
 				BE7596E42301F8C000D68580 /* Biblio.xcdatamodeld */,
 				BE7596E02301D8A100D68580 /* GCDBlackbox.swift */,
 				BE7596DD2300B02D00D68580 /* View */,
@@ -185,6 +198,27 @@
 				BE7596DE2300B04400D68580 /* BookCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		BE7596E72301FB3700D68580 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				BE7596EF2301FC4C00D68580 /* Model */,
+				BE7596EB2301FB6A00D68580 /* DataController.swift */,
+				BE7596ED2301FB7700D68580 /* CoreDataHelper.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		BE7596EF2301FC4C00D68580 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BE7596F02301FC5D00D68580 /* Book.swift */,
+				BE7596F22301FCBA00D68580 /* Person.swift */,
+				BE7596F42301FF7300D68580 /* Person +  CustomProperties.swift */,
+				BE7596F62301FF8100D68580 /* Book + CustomProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,11 +358,17 @@
 				BE7596E32301DBA100D68580 /* ViewController+Extensions.swift in Sources */,
 				BE3A07AC2300A75E00CD956B /* SearchResultsViewController.swift in Sources */,
 				BE7596DF2300B04400D68580 /* BookCell.swift in Sources */,
+				BE7596F52301FF7300D68580 /* Person +  CustomProperties.swift in Sources */,
 				BE3A07B52300AD7500CD956B /* BookClientOperations.swift in Sources */,
 				BE3A07AE2300A7EA00CD956B /* MyLibraryViewController.swift in Sources */,
+				BE7596F12301FC5D00D68580 /* Book.swift in Sources */,
 				BE7596E62301F8C000D68580 /* Biblio.xcdatamodeld in Sources */,
 				BE3A077C23009C8A00CD956B /* SearchBookViewController.swift in Sources */,
+				BE7596EE2301FB7700D68580 /* CoreDataHelper.swift in Sources */,
 				BE3A077A23009C8A00CD956B /* AppDelegate.swift in Sources */,
+				BE7596F72301FF8100D68580 /* Book + CustomProperties.swift in Sources */,
+				BE7596EC2301FB6A00D68580 /* DataController.swift in Sources */,
+				BE7596F32301FCBA00D68580 /* Person.swift in Sources */,
 				BE3A07B32300AD6600CD956B /* BookConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
