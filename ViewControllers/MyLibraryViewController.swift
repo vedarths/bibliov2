@@ -11,7 +11,7 @@ import UIKit
 
 class MyLibraryViewController: UIViewController {
     
-    
+    var dataController: DataController?
     override func viewDidLoad() {
         super.viewDidLoad()
     }

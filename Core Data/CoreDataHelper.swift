@@ -22,6 +22,18 @@ extension DataController {
         }
         return pin
     }
+    
+    func fetchPerson(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> Person? {
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        fr.predicate = predicate
+        if let sorting = sorting {
+            fr.sortDescriptors = [sorting]
+        }
+        guard let person = (try viewContext.fetch(fr) as! [Person]).first else {
+            return nil
+        }
+        return person
+    }
 }
 
     

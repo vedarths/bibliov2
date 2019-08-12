@@ -137,7 +137,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" id="S4e-NL-l7n" customClass="BookCell" customModule="BiblioV2" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="BookCell" id="S4e-NL-l7n" customClass="BookCell" customModule="BiblioV2" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="131"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -177,6 +177,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YfX-WK-W2Z"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="iM8-ws-1Bq" id="Btx-cZ-jeG"/>
+                        <outlet property="flowLayout" destination="6W2-M6-14E" id="uQf-it-YWd"/>
+                        <outlet property="newResultsButton" destination="HKF-Ng-dgu" id="swb-8T-eMM"/>
+                        <outlet property="statusLabel" destination="hd6-7Z-zPw" id="KxF-4u-bcb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9FS-oX-DYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

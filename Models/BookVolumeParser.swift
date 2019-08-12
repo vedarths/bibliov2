@@ -15,38 +15,38 @@ struct BookVolumeParser: Codable {
 }
 
 struct BookItem: Codable {
-    let kind: String
+    let kind: String?
     let id: String
-    let etag: String
-    let selfLink: String
-    let volumeInfo: VolumeInfo
-    let saleInfo: SaleInfo
-    let searchInfo: SearchInfo
+    let etag: String?
+    let selfLink: String?
+    let volumeInfo: VolumeInfo?
+    let saleInfo: SaleInfo?
+    let searchInfo: SearchInfo?
 }
 
 struct VolumeInfo: Codable {
-    let title: String
-//    let subtitle: String
+    let title: String?
+    let subtitle: String?
     let authors: [String]
     let publisher: String
     let publishedDate: String
     let description: String
-//    let industryIdentifiers: [IndustryIdentifiers]
+    let industryIdentifiers: [IndustryIdentifiers]?
     let pageCount : Int
-//    let categories: [String]
-//    let averageRating: Double
-//    let ratingsCount: Int
+    let categories: [String]?
+    let averageRating: Double?
+    let ratingsCount: Int?
     let imageLinks: ImageLinks
-    let language: String
-    let previewLink: String
-    let infoLink: String
-    let canonicalVolumeLink: String
+    let language: String?
+    let previewLink: String?
+    let infoLink: String?
+    let canonicalVolumeLink: String?
 }
 
 struct SaleInfo: Codable {
-    let country: String
-    let saleability: String
-    let isEbook: Bool
+    let country: String?
+    let saleability: String?
+    let isEbook: Bool?
 }
 
 struct SearchInfo: Codable {
@@ -54,11 +54,11 @@ struct SearchInfo: Codable {
 }
 
 struct IndustryIdentifiers: Codable {
-    let type: String
-    let identifier: String
+    let type: String?
+    let identifier: String?
 }
 
 struct ImageLinks : Codable {
-    let smallThumbnail: String
-    let thumbnail : String
+    let smallThumbnail: String?
+    let thumbnail : String?
 }
