@@ -28,7 +28,7 @@ class BookDetailsViewController: UIViewController {
     
     private func updateView() -> Void {
         self.bookTitleLabel.text = book!.title
-        self.bookDescriptionLabel.text = book!.description
+        self.bookDescriptionLabel.text = book!.bookDescription
         self.bookImageView.image = UIImage(data: book!.image! as Data)
     }
     
