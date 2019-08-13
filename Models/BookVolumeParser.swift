@@ -9,9 +9,9 @@
 import Foundation
 
 struct BookVolumeParser: Codable {
-    let kind: String
-    let totalItems: Int
-    let items: [BookItem]
+    let kind: String?
+    let totalItems: Int?
+    let items: [BookItem]?
 }
 
 struct BookItem: Codable {
@@ -28,11 +28,11 @@ struct VolumeInfo: Codable {
     let title: String?
     let subtitle: String?
     let authors: [String]
-    let publisher: String
-    let publishedDate: String
-    let description: String
+    let publisher: String?
+    let publishedDate: String?
+    let description: String?
     let industryIdentifiers: [IndustryIdentifiers]?
-    let pageCount : Int
+    let pageCount : Int?
     let categories: [String]?
     let averageRating: Double?
     let ratingsCount: Int?

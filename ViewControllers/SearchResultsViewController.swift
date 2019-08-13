@@ -12,6 +12,7 @@ import CoreData
 
 class SearchResultsViewController: UIViewController {
     
+    var searchTitle: String?
     var books: [Book]?
     var dataController : DataController?
     var fetchResultsController: NSFetchedResultsController<Book>!
@@ -25,7 +26,7 @@ class SearchResultsViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         updateFlowLayout(view.frame.size)
-        setStatusLabel("\(String(describing: books?.count)) item(s) found")
+        setStatusLabel("\(String(describing: books!.count)) item(s) found")
         setupFetchedResultsController()
     }
     

@@ -68,7 +68,7 @@ class SearchBookViewController: UIViewController {
                 if let bookVolumeParsed = bookVolumeParsed {
                     self.totalTitles = bookVolumeParsed.totalItems
                     print("total items fetched \(String(describing: self.totalTitles))")
-                    self.storeBooks(bookVolumeParsed.items)
+                    self.storeBooks(bookVolumeParsed.items!)
                     self.showSearchResultsViewController()
                 } else {
                     self.showError(message: error as! String)
@@ -80,6 +80,8 @@ class SearchBookViewController: UIViewController {
     private func showSearchResultsViewController() {
         let searchResultsVc = storyboard!.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
         searchResultsVc.dataController = dataController
+        searchResultsVc.books = getAllBooks()
+        searchResultsVc.searchTitle = self.titleTextField.text
         present(searchResultsVc, animated: true, completion: nil)
     }
     
