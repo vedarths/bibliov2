@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dataController.load()
         let navigationContoller = window?.rootViewController as! UINavigationController
         let tabBarController = navigationContoller.topViewController as! UITabBarController
-        let searchBookViewController = tabBarController.viewControllers![0] as! SearchBookViewController
+        let searchBookViewController = tabBarController.viewControllers![1] as! SearchBookViewController
         searchBookViewController.dataController = dataController
-        let myLibraryViewController = tabBarController.viewControllers![1] as! MyLibraryViewController
+        let myLibraryViewController = tabBarController.viewControllers![0] as! MyLibraryViewController
         myLibraryViewController.dataController = dataController
         
         return true

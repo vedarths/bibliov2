@@ -23,6 +23,16 @@ extension DataController {
         return pin
     }
     
+    func deleteAllBooks(books: [Book]) throws -> Void {
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: Book.name)
+        fr.includesPropertyValues = false
+        
+        for book in books {
+            viewContext.delete(book)
+        }
+        try viewContext.save()
+    }
+    
     func fetchPerson(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> Person? {
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         fr.predicate = predicate

@@ -61,8 +61,21 @@ class SearchBookViewController: UIViewController {
         return books
     }
     
+    private func clearSearchResults() -> Void {
+        let books = getAllBooks()!
+        do {
+            try DataController.getInstance().deleteAllBooks(books: books)
+        } catch {
+            print("\(#function) error:\(error)")
+            showInfo(withTitle: "Error", withMessage: "Error while deleting books: \(error)")
+        }
+
+    }
+    
     @IBAction func doSearch(_ sender: Any) {
         let title = self.titleTextField.text!
+        //clear previous search results
+        //clearSearchResults()
         BookClient.sharedInstance().findBy(title: title) { (bookVolumeParsed, error) in
             performUIUpdatesOnMain {
                 if let bookVolumeParsed = bookVolumeParsed {
@@ -91,8 +104,8 @@ class SearchBookViewController: UIViewController {
         }
         for book in books {
             DispatchQueue.main.async {
-                if let url = book.volumeInfo!.imageLinks.thumbnail {
-                    _ = Book(id: book.id, title: (book.volumeInfo?.title!)!, imageUrl: url, author: book.volumeInfo!.authors[0], context: DataController.getInstance().viewContext)
+                if let url = book.volumeInfo!.imageLinks?.thumbnail {
+                    _ = Book(id: book.id, title: (book.volumeInfo?.title!)!, imageUrl: url, author: book.volumeInfo!.authors![0], context: DataController.getInstance().viewContext)
                     DataController.getInstance().autoSaveViewContext()
                 }
             }
