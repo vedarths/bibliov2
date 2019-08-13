@@ -20,6 +20,7 @@
 		BE3A07B32300AD6600CD956B /* BookConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07B22300AD6600CD956B /* BookConstants.swift */; };
 		BE3A07B52300AD7500CD956B /* BookClientOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07B42300AD7500CD956B /* BookClientOperations.swift */; };
 		BE3A07B82300AE1800CD956B /* BookVolumeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A07B72300AE1800CD956B /* BookVolumeParser.swift */; };
+		BE64573323035747008A9D3B /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE64573223035747008A9D3B /* BookDetailsViewController.swift */; };
 		BE7596DF2300B04400D68580 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596DE2300B04400D68580 /* BookCell.swift */; };
 		BE7596E12301D8A100D68580 /* GCDBlackbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596E02301D8A100D68580 /* GCDBlackbox.swift */; };
 		BE7596E32301DBA100D68580 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596E22301DBA100D68580 /* ViewController+Extensions.swift */; };
@@ -69,6 +70,7 @@
 		BE3A07B22300AD6600CD956B /* BookConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookConstants.swift; sourceTree = "<group>"; };
 		BE3A07B42300AD7500CD956B /* BookClientOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookClientOperations.swift; sourceTree = "<group>"; };
 		BE3A07B72300AE1800CD956B /* BookVolumeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookVolumeParser.swift; sourceTree = "<group>"; };
+		BE64573223035747008A9D3B /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		BE7596DE2300B04400D68580 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		BE7596E02301D8A100D68580 /* GCDBlackbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackbox.swift; sourceTree = "<group>"; };
 		BE7596E22301DBA100D68580 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				BE3A07AB2300A75E00CD956B /* SearchResultsViewController.swift */,
 				BE3A07AD2300A7EA00CD956B /* MyLibraryViewController.swift */,
 				BE7596E22301DBA100D68580 /* ViewController+Extensions.swift */,
+				BE64573223035747008A9D3B /* BookDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				BE7596EC2301FB6A00D68580 /* DataController.swift in Sources */,
 				BE7596F32301FCBA00D68580 /* Person.swift in Sources */,
 				BE3A07B32300AD6600CD956B /* BookConstants.swift in Sources */,
+				BE64573323035747008A9D3B /* BookDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

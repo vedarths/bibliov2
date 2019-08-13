@@ -89,6 +89,13 @@ extension SearchResultsViewController : UICollectionViewDataSource, UICollection
         configImage(using: bookCell, book: book, collectionView: collectionView, index: indexPath)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedBook = fetchResultsController.object(at: indexPath)
+        let bookDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "BookDetailsViewController") as? BookDetailsViewController
+        bookDetailsViewController?.book = selectedBook
+        present(bookDetailsViewController!, animated: true, completion: nil)
+      }
+    
     private func configImage(using cell: BookCell, book: Book, collectionView: UICollectionView, index: IndexPath) {
         if let imageData = book.image {
             cell.imageView.image = UIImage(data: Data(referencing: imageData))

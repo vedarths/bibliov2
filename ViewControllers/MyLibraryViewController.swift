@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MyLibraryViewController: UIViewController {
+class MyLibraryViewController: UITableViewController {
     
     var dataController: DataController?
     override func viewDidLoad() {

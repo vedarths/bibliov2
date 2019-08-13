@@ -13,16 +13,17 @@ import CoreData
 public class Book: NSManagedObject {
     static let name = "Book"
     
-    convenience init(id: String, title: String, imageUrl: String, author: String, context: NSManagedObjectContext) {
+    convenience init(id: String, title: String, bookDescription: String, imageUrl: String, author: String, context: NSManagedObjectContext) {
         if let ent = NSEntityDescription.entity(forEntityName: Book.name, in: context) {
             self.init(entity: ent, insertInto: context)
             self.id = id
             self.title = title
+            self.bookDescription = bookDescription
             self.author = author
             self.image = nil
             self.imageUrl = imageUrl
-            //self.owner = owner
-            //self.lender = lender
+            self.owner = owner
+            self.lender = lender
         } else {
             fatalError("Could not initialise entity Book!")
         }

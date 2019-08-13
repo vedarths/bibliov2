@@ -105,7 +105,18 @@ class SearchBookViewController: UIViewController {
         for book in books {
             DispatchQueue.main.async {
                 if let url = book.volumeInfo!.imageLinks?.thumbnail {
-                    _ = Book(id: book.id, title: (book.volumeInfo?.title!)!, imageUrl: url, author: book.volumeInfo!.authors![0], context: DataController.getInstance().viewContext)
+                   
+                    let description = book.volumeInfo?.description
+                    
+                    if description != nil {
+                        _ = Book(id: book.id, title: (book.volumeInfo?.title!)!,
+                                 bookDescription: (book.volumeInfo?.description!)!,
+                                 imageUrl: url, author: book.volumeInfo!.authors![0], context: DataController.getInstance().viewContext)
+                    } else {
+                        _ = Book(id: book.id, title: (book.volumeInfo?.title!)!,
+                             bookDescription: "",
+                             imageUrl: url, author: book.volumeInfo!.authors![0], context: DataController.getInstance().viewContext)
+                    }
                     DataController.getInstance().autoSaveViewContext()
                 }
             }

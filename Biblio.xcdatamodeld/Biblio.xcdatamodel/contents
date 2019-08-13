@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Book" representedClassName="Book" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bookDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +19,7 @@
         <relationship name="owns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Book" inverseName="owner" inverseEntity="Book" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-36.5390625" positionY="-51.67578125" width="128" height="148"/>
+        <element name="Book" positionX="-36.5390625" positionY="-51.67578125" width="128" height="165"/>
         <element name="Person" positionX="217.4140625" positionY="-36.625" width="128" height="133"/>
     </elements>
 </model>
