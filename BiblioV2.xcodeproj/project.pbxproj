@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE3447D42303C39000262A89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3447D32303C39000262A89 /* LoginViewController.swift */; };
+		BE3447D62303C39D00262A89 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3447D52303C39D00262A89 /* SignupViewController.swift */; };
+		BE3447D92303D14200262A89 /* BiblioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3447D82303D14200262A89 /* BiblioButton.swift */; };
 		BE3A077A23009C8A00CD956B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A077923009C8A00CD956B /* AppDelegate.swift */; };
 		BE3A077C23009C8A00CD956B /* SearchBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A077B23009C8A00CD956B /* SearchBookViewController.swift */; };
 		BE3A077F23009C8A00CD956B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3A077D23009C8A00CD956B /* Main.storyboard */; };
@@ -51,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE3447D32303C39000262A89 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BE3447D52303C39D00262A89 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		BE3447D82303D14200262A89 /* BiblioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiblioButton.swift; sourceTree = "<group>"; };
 		BE3A077623009C8A00CD956B /* BiblioV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiblioV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3A077923009C8A00CD956B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE3A077B23009C8A00CD956B /* SearchBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE3447D72303D12B00262A89 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				BE3447D82303D14200262A89 /* BiblioButton.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 		BE3A076D23009C8A00CD956B = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +187,8 @@
 				BE3A07AD2300A7EA00CD956B /* MyLibraryViewController.swift */,
 				BE7596E22301DBA100D68580 /* ViewController+Extensions.swift */,
 				BE64573223035747008A9D3B /* BookDetailsViewController.swift */,
+				BE3447D32303C39000262A89 /* LoginViewController.swift */,
+				BE3447D52303C39D00262A89 /* SignupViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -206,6 +222,7 @@
 		BE7596E72301FB3700D68580 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				BE3447D72303D12B00262A89 /* Style */,
 				BE7596EF2301FC4C00D68580 /* Model */,
 				BE7596EB2301FB6A00D68580 /* DataController.swift */,
 				BE7596ED2301FB7700D68580 /* CoreDataHelper.swift */,
@@ -361,14 +378,17 @@
 				BE7596E32301DBA100D68580 /* ViewController+Extensions.swift in Sources */,
 				BE3A07AC2300A75E00CD956B /* SearchResultsViewController.swift in Sources */,
 				BE7596DF2300B04400D68580 /* BookCell.swift in Sources */,
+				BE3447D92303D14200262A89 /* BiblioButton.swift in Sources */,
 				BE7596F52301FF7300D68580 /* Person +  CustomProperties.swift in Sources */,
 				BE3A07B52300AD7500CD956B /* BookClientOperations.swift in Sources */,
+				BE3447D42303C39000262A89 /* LoginViewController.swift in Sources */,
 				BE3A07AE2300A7EA00CD956B /* MyLibraryViewController.swift in Sources */,
 				BE7596F12301FC5D00D68580 /* Book.swift in Sources */,
 				BE7596E62301F8C000D68580 /* Biblio.xcdatamodeld in Sources */,
 				BE3A077C23009C8A00CD956B /* SearchBookViewController.swift in Sources */,
 				BE7596EE2301FB7700D68580 /* CoreDataHelper.swift in Sources */,
 				BE3A077A23009C8A00CD956B /* AppDelegate.swift in Sources */,
+				BE3447D62303C39D00262A89 /* SignupViewController.swift in Sources */,
 				BE7596F72301FF8100D68580 /* Book + CustomProperties.swift in Sources */,
 				BE7596EC2301FB6A00D68580 /* DataController.swift in Sources */,
 				BE7596F32301FCBA00D68580 /* Person.swift in Sources */,

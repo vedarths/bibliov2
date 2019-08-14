@@ -17,13 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        dataController.load()
-        let navigationContoller = window?.rootViewController as! UINavigationController
-        let tabBarController = navigationContoller.topViewController as! UITabBarController
-        let searchBookViewController = tabBarController.viewControllers![1] as! SearchBookViewController
-        searchBookViewController.dataController = dataController
-        let myLibraryViewController = tabBarController.viewControllers![0] as! MyLibraryViewController
-        myLibraryViewController.dataController = dataController
+        //dataController.load()
+       // let navigationContoller = window?.rootViewController as! UINavigationController
+       // let tabBarController = navigationContoller.topViewController as! UITabBarController
+        //let searchBookViewController = tabBarController.viewControllers![1] as! SearchBookViewController
+       // searchBookViewController.dataController = dataController
+       // let myLibraryViewController = tabBarController.viewControllers![0] as! MyLibraryViewController
+       // myLibraryViewController.dataController = dataController
         
         return true
     }
