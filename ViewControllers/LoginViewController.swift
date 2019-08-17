@@ -22,6 +22,14 @@ class LoginViewController : UIViewController {
         super.viewDidLoad()
     }
     
+    func getUserName() -> String {
+        return (self.userNameTextField?.text)!
+    }
+    
+    func getPassword() -> String {
+        return (self.passwordTextField?.text)!
+    }
+    
     @IBAction func doLogin(_ sender: Any) {
     }
     
