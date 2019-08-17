@@ -13,7 +13,7 @@
         <!--Signup View Controller-->
         <scene sceneID="fGf-We-ept">
             <objects>
-                <viewController id="UqP-03-GqN" customClass="SignupViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UqP-03-GqN" customClass="SignupViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yc0-dw-5sp">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,6 +23,9 @@
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="doSignup:" destination="UqP-03-GqN" eventType="touchUpInside" id="bie-TX-L0A"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RhT-li-iOX">
                                 <rect key="frame" x="20" y="216" width="696" height="30"/>
@@ -60,6 +63,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="doCancel:" destination="UqP-03-GqN" eventType="touchUpInside" id="btf-2d-YFs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.15128865007606837" green="0.35198980764581933" blue="0.68438124687098445" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcG-1w-I00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1642.5" y="781.69014084507046"/>
+            <point key="canvasLocation" x="-1630" y="783"/>
         </scene>
         <!--Login-->
         <scene sceneID="TZh-El-tgt">
@@ -204,7 +210,7 @@
         <!--Biblio-->
         <scene sceneID="JQV-zf-oL1">
             <objects>
-                <navigationController title="Biblio" id="hnD-qk-dmx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="landingNavigationController" title="Biblio" id="hnD-qk-dmx" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HKe-Vc-e3o">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

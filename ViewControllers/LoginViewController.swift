@@ -11,6 +11,7 @@ import UIKit
 
 class LoginViewController : UIViewController {
     
+    var dataController: DataController?
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -30,11 +31,28 @@ class LoginViewController : UIViewController {
         return (self.passwordTextField?.text)!
     }
     
+    private func completeLogin() {
+         let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
+         present(navigationContoller, animated: true, completion: nil)
+    }
+    
     @IBAction func doLogin(_ sender: Any) {
+        UserManagementClient.sharedInstance().signIn(self) { (success, errorString) in
+            performUIUpdatesOnMain {
+                if success {
+                    self.completeLogin()
+                } else {
+                    self.showError(message: errorString!)
+                }
+            }
+        }
     }
     
     @IBAction func doForgotPassword(_ sender: Any) {
     }
     @IBAction func doSignup(_ sender: Any) {
+        let signupViewController = storyboard!.instantiateViewController(withIdentifier: "signupViewController") as! SignupViewController
+        signupViewController.dataController = dataController!
+        present(signupViewController, animated: true, completion: nil)
     }
 }
