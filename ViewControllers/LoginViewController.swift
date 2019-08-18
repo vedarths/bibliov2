@@ -49,6 +49,7 @@ class LoginViewController : UIViewController {
     }
     
     @IBAction func doForgotPassword(_ sender: Any) {
+        
     }
     @IBAction func doSignup(_ sender: Any) {
         let signupViewController = storyboard!.instantiateViewController(withIdentifier: "signupViewController") as! SignupViewController

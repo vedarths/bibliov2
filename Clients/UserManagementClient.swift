@@ -38,16 +38,16 @@ class UserManagementClient: NSObject {
     
     func signUp(_ hostViewController: UIViewController, completionHandlerForLogin: @escaping(_ success: Bool, _ errorStringL: String?) -> Void) {
         
-        let loginViewController = hostViewController as! LoginViewController
-        userName = loginViewController.getUserName()
-        password = loginViewController.getPassword()
+        let signupViewController = hostViewController as! SignupViewController
+        userName = signupViewController.getUserName()
+        password = signupViewController.getPassword()
         
         if (userName == "") {
-            loginViewController.showError(message: "Please enter a valid email address")
+            signupViewController.showError(message: "Please enter a valid email address")
         } else {
             Auth.auth().createUser(withEmail: userName!, password: password!) { (user, error) in
                 if (error != nil) {
-                    loginViewController.showError(message: "Could not signup user \(String(describing: self.userName!))")
+                    signupViewController.showError(message: "Could not signup user \(String(describing: self.userName!))")
                 } else {
                     print("managed to sign up user \(String(describing: self.userName!))")
                     completionHandlerForLogin(true, nil)
