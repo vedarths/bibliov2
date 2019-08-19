@@ -12,7 +12,7 @@ import UIKit
 class LoginViewController : UIViewController {
     
     var dataController: DataController?
-    
+    var person: Person?
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -32,8 +32,21 @@ class LoginViewController : UIViewController {
     }
     
     private func completeLogin() {
+         fetchPerson()
          let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
          present(navigationContoller, animated: true, completion: nil)
+    }
+    
+    func fetchPerson() -> Void {
+        let username = getUserName()
+        if (username != "") {
+            do {
+                let person = try dataController!.fetchPerson(id: username, entityName: "Person")
+                self.person = person!
+            } catch {
+                 fatalError("The fetch could not be performed: \(error.localizedDescription)")
+            }
+        }
     }
     
     @IBAction func doLogin(_ sender: Any) {

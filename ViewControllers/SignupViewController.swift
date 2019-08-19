@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 
 class SignupViewController: UIViewController {
@@ -22,9 +23,24 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     
     var person: Person?
+    var fetchedResultsController:NSFetchedResultsController<Person>!
+    
+    fileprivate func setupFetchedResultsController() {
+        let fetchRequest:NSFetchRequest<Person> = Person.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController!.viewContext, sectionNameKeyPath: nil, cacheName: "person")
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch could not be performed: \(error.localizedDescription)")
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupFetchedResultsController()
     }
     
     func getUserName() -> String {
@@ -43,7 +59,13 @@ class SignupViewController: UIViewController {
         return (self.lastNameTextField?.text)!
     }
     
-    private func completeLogin() {
+    private func completeSignup() {
+        do {
+        try dataController?.createPerson(email: self.getUserName(), title: "", firstname: getFirstName(), lastname: getLastName())
+        } catch {
+            print("\(#function) error:\(error)")
+            showInfo(withTitle: "Error", withMessage: "Error while saving Person into disk: \(error)")
+        }
         let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
         present(navigationContoller, animated: true, completion: nil)
     }
@@ -52,7 +74,7 @@ class SignupViewController: UIViewController {
         UserManagementClient.sharedInstance().signUp(self) { (success, errorString) in
             performUIUpdatesOnMain {
                 if success {
-                    self.completeLogin()
+                    self.completeSignup()
                 } else {
                     self.showError(message:errorString!)
                 }

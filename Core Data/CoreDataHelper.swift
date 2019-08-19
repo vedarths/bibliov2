@@ -51,7 +51,7 @@ extension DataController {
         return booksForPerson
     }
     
-    func fetchPerson(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> Person? {
+    func fetchPerson(_ predicate: NSPredicate? = nil, id: String, entityName: String, sorting: NSSortDescriptor? = nil) throws -> Person? {
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         fr.predicate = predicate
         if let sorting = sorting {
@@ -61,6 +61,15 @@ extension DataController {
             return nil
         }
         return person
+    }
+    
+    func createPerson(email: String, title: String, firstname: String, lastname: String) throws -> Void {
+        _ = Person(id: email, title: title, firstName: firstname, lastName: lastname, context: viewContext)
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error while saving person: \(error)")
+        }
     }
 }
 
