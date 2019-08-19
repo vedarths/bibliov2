@@ -13,6 +13,7 @@ import CoreData
 class SearchResultsViewController: UIViewController {
     
     var searchTitle: String?
+    var bookItems: [BookItem]?
     var books: [Book]?
     var dataController : DataController?
     var fetchResultsController: NSFetchedResultsController<Book>!
@@ -23,10 +24,11 @@ class SearchResultsViewController: UIViewController {
     var presentingAlert = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        storeBooks(self.bookItems!)
         collectionView.delegate = self
         collectionView.dataSource = self
         updateFlowLayout(view.frame.size)
-        setStatusLabel("\(String(describing: books!.count)) item(s) found")
+        setStatusLabel("\(String(describing: self.bookItems!.count)) item(s) found")
         setupFetchedResultsController()
     }
     
@@ -45,6 +47,31 @@ class SearchResultsViewController: UIViewController {
             try fetchResultsController.performFetch()
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
+        }
+    }
+    
+    private func storeBooks(_ books: [BookItem]) {
+        func showErrorMessage(msg: String) {
+            showInfo(withTitle: "Error", withMessage: msg)
+        }
+        for book in books {
+            DispatchQueue.main.async {
+                if let url = book.volumeInfo!.imageLinks?.thumbnail {
+                    
+                    let description = book.volumeInfo?.description
+                    
+                    if description != nil {
+                        _ = Book(id: book.id, title: (book.volumeInfo?.title!)!,
+                                 bookDescription: (book.volumeInfo?.description!)!,
+                                 imageUrl: url, author: book.volumeInfo!.authors![0], context: DataController.getInstance().viewContext)
+                    } else {
+                        _ = Book(id: book.id, title: (book.volumeInfo?.title!)!,
+                                 bookDescription: "",
+                                 imageUrl: url, author: book.volumeInfo!.authors![0], context: DataController.getInstance().viewContext)
+                    }
+                    DataController.getInstance().autoSaveViewContext()
+                }
+            }
         }
     }
     
@@ -83,7 +110,7 @@ extension SearchResultsViewController : UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let book = self.fetchResultsController.object(at: indexPath)
+        let book = self.fetchResultsController!.object(at: indexPath)
         let bookCell = cell as! BookCell
         bookCell.imageUrl = book.imageUrl!
         configImage(using: bookCell, book: book, collectionView: collectionView, index: indexPath)

@@ -34,7 +34,19 @@ class LoginViewController : UIViewController {
     private func completeLogin() {
          fetchPerson()
          let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
+         let tabBarController = navigationContoller.viewControllers.first as! UITabBarController
+        let myLibraryViewController = tabBarController.viewControllers![0] as! MyLibraryViewController
+         myLibraryViewController.dataController = dataController
+         let searchBookViewController = tabBarController.viewControllers![1] as! SearchBookViewController
+         searchBookViewController.dataController = dataController
          present(navigationContoller, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "forgotPaswordFlow" {
+            let forgotPassworVc = segue.destination as! ForgotPasswordViewController
+            forgotPassworVc.dataController = self.dataController
+        }
     }
     
     func fetchPerson() -> Void {

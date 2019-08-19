@@ -56,6 +56,24 @@ class UserManagementClient: NSObject {
         }
     }
     
+    func resetPassword(_ hostViewController: UIViewController, completionHandlerForReset: @escaping(_ success: Bool, _ errorStringL: String?) -> Void) {
+        
+        let forgotPasswordVc = hostViewController as! ForgotPasswordViewController
+        userName = forgotPasswordVc.getEmailAddress()
+        if (userName == "") {
+            forgotPasswordVc.showError(message: "Please enter a valid email address")
+        } else {
+            Auth.auth().sendPasswordReset(withEmail: userName!) { (error) in
+                if (error != nil) {
+                    forgotPasswordVc.showError(message: "Could not reset password for user \(String(describing: self.userName!))")
+                } else {
+                    print("managed to send reset link for customer \(String(describing: self.userName!))")
+                    completionHandlerForReset(true, nil)
+                }
+            }
+        }
+    }
+    
     class func sharedInstance() -> UserManagementClient {
         struct Singleton {
             static var sharedInstance = UserManagementClient()

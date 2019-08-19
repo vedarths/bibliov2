@@ -111,7 +111,7 @@
         <!--Login-->
         <scene sceneID="TZh-El-tgt">
             <objects>
-                <viewController title="Login" id="uRy-3Z-P7J" customClass="LoginViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uRy-3Z-P7J" customClass="LoginViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="05X-6r-2MS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,6 +145,7 @@
                                 </state>
                                 <connections>
                                     <action selector="doForgotPassword:" destination="uRy-3Z-P7J" eventType="touchUpInside" id="lBe-Jb-Xhq"/>
+                                    <segue destination="GwK-aj-vDt" kind="show" identifier="forgotPaswordFlow" id="pLH-Ob-GTs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehU-CI-FXY">
@@ -226,7 +227,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="Itv-g4-GdB">
             <objects>
-                <viewController id="GwK-aj-vDt" customClass="ForgotPasswordViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GwK-aj-vDt" customClass="ForgotPasswordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ikF-UZ-2np">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,6 +241,9 @@
                                 <state key="normal" title="Reset Password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="doResetPassword:" destination="GwK-aj-vDt" eventType="touchUpInside" id="jyp-FM-uux"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4B-HQ-OTX">
                                 <rect key="frame" x="15" y="35" width="384" height="30"/>
@@ -275,6 +279,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tuk-A8-ZkW"/>
                     </view>
+                    <connections>
+                        <outlet property="emailAddressTextField" destination="Ji6-q9-Z74" id="Sqa-zO-ekq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4v-gO-Bj1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
