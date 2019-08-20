@@ -21,6 +21,8 @@ class LoginViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.userNameTextField.text = ""
+        self.passwordTextField.text = ""
     }
     
     func getUserName() -> String {
@@ -34,11 +36,15 @@ class LoginViewController : UIViewController {
     private func completeLogin() {
          fetchPerson()
          let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
-         let tabBarController = navigationContoller.viewControllers.first as! UITabBarController
-        let myLibraryViewController = tabBarController.viewControllers![0] as! MyLibraryViewController
+         let mainController = navigationContoller.viewControllers.first as! MainController
+         mainController.dataController = dataController
+         mainController.person = person
+         let myLibraryViewController = mainController.viewControllers![0] as! MyLibraryViewController
          myLibraryViewController.dataController = dataController
-         let searchBookViewController = tabBarController.viewControllers![1] as! SearchBookViewController
-         searchBookViewController.dataController = dataController
+         myLibraryViewController.person = person
+//         let searchBookViewController = mainController.viewControllers![1] as! SearchBookViewController
+//         searchBookViewController.dataController = dataController
+//         searchBookViewController.person = person
          present(navigationContoller, animated: true, completion: nil)
     }
     

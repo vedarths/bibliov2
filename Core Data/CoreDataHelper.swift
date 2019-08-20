@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension DataController {
     
@@ -44,7 +45,7 @@ extension DataController {
         }
         var booksForPerson : [Book]?
         for book in books {
-            if (book.owner == person) {
+            if (book.ownedBy == person.id) {
                 booksForPerson?.append(book)
             }
         }
@@ -69,6 +70,25 @@ extension DataController {
             try viewContext.save()
         } catch {
             print("Error while saving person: \(error)")
+        }
+    }
+    
+    func createBook(id: String, title: String, bookDescription: String, imageUrl: String, author: String) throws -> Book {
+        let book = Book(id: id, title: title, bookDescription: bookDescription, imageUrl: imageUrl, author: author, context: viewContext)
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error while saving Book: \(error)")
+        }
+        return book
+    }
+    
+    func setOwner(book: Book, ownedBy: String, imageUrl: String) throws -> Void {
+        _ = Book(book: book, ownedBy: ownedBy, imageUrl: imageUrl, context: viewContext)
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error while setting Book owner: \(error)")
         }
     }
 }

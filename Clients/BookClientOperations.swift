@@ -38,7 +38,6 @@ extension BookClient {
         }
     }
     
-
     func getImage(imageUrl: String, result: @escaping (_ result: Data?, _ error: NSError?) -> Void) {
         guard let url = URL(string: imageUrl) else {
             return

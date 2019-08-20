@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+import UIKit
 extension Person {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Person> {
         return NSFetchRequest<Person>(entityName: "Person")
@@ -22,7 +22,6 @@ extension Person {
     @NSManaged public var title: String?
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
-    @NSManaged public var image: NSData?
+    @NSManaged public var image: UIImage?
     @NSManaged public var owns: [Book]?
-    @NSManaged public var owes: [Book]?
 }

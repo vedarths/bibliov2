@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension Book {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Book> {
@@ -23,8 +24,7 @@ extension Book {
     @NSManaged public var title: String?
     @NSManaged public var author: String?
     @NSManaged public var imageUrl: String?
-    @NSManaged public var image: NSData?
-    @NSManaged public var owner: Person?
-    @NSManaged public var lender: Person?
+    @NSManaged public var image: UIImage?
+    @NSManaged public var ownedBy: String?
     
 }

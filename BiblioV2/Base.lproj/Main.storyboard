@@ -131,11 +131,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZFP-Ch-SNd" userLabel="Password">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZFP-Ch-SNd" userLabel="Password">
                                 <rect key="frame" x="15" y="170" width="383" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fI8-kM-vLP">
                                 <rect key="frame" x="310" y="208" width="88" height="26"/>
@@ -287,10 +286,10 @@
             </objects>
             <point key="canvasLocation" x="-939.13043478260875" y="781.79347826086962"/>
         </scene>
-        <!--Item-->
+        <!--My Library-->
         <scene sceneID="Haa-AC-uv0">
             <objects>
-                <tableViewController id="jpw-0Q-umW" customClass="MyLibraryViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MyLibraryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jpw-0Q-umW" customClass="MyLibraryViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tXv-Mm-zHc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,22 +309,22 @@
                             <outlet property="delegate" destination="jpw-0Q-umW" id="btz-s0-lPM"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="ala-qv-Oeg"/>
+                    <tabBarItem key="tabBarItem" title="My Library" id="ala-qv-Oeg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eM-HW-Ys3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1232" y="438"/>
+            <point key="canvasLocation" x="1057" y="558"/>
         </scene>
-        <!--Search-->
+        <!--Add Book-->
         <scene sceneID="5cG-sR-EJ6">
             <objects>
-                <viewController id="bUs-XA-qgv" customClass="SearchBookViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add Book" id="bUs-XA-qgv" customClass="SearchBookViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Sh-ho-W3Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qm9-bh-1Cl">
-                                <rect key="frame" x="15" y="69" width="384" height="90"/>
+                                <rect key="frame" x="15" y="170" width="384" height="90"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xbH-iz-554">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="40"/>
@@ -350,11 +349,24 @@
                                     <constraint firstAttribute="height" constant="90" id="jiW-i3-oau"/>
                                 </constraints>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X1a-aK-Bjg">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Search Book" id="3sW-dH-4u2">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="nJj-oM-7t3">
+                                            <connections>
+                                                <action selector="doCancel:" destination="bUs-XA-qgv" id="nut-78-yhp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Sd5-EP-gsr" firstAttribute="trailing" secondItem="Qm9-bh-1Cl" secondAttribute="trailing" constant="15" id="Foa-WR-3JX"/>
-                            <constraint firstItem="Qm9-bh-1Cl" firstAttribute="top" secondItem="Sd5-EP-gsr" secondAttribute="top" constant="5" id="N9N-Kc-VDR"/>
+                            <constraint firstItem="Qm9-bh-1Cl" firstAttribute="top" secondItem="Sd5-EP-gsr" secondAttribute="top" constant="150" id="N9N-Kc-VDR"/>
                             <constraint firstItem="Qm9-bh-1Cl" firstAttribute="leading" secondItem="Sd5-EP-gsr" secondAttribute="leading" constant="15" id="hIx-Gy-uj4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Sd5-EP-gsr"/>
@@ -368,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lJ0-BS-7um" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="-321"/>
+            <point key="canvasLocation" x="1075" y="-622"/>
         </scene>
         <!--Search Results View Controller-->
         <scene sceneID="wSx-Wn-LS3">
@@ -379,12 +391,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="g4Q-HQ-xeB">
-                                <rect key="frame" x="15" y="69" width="384" height="390"/>
+                                <rect key="frame" x="15" y="25" width="384" height="390"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APV-QJ-dfC">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="44"/>
                                         <items>
-                                            <navigationItem title="Search Results" id="Kum-Us-OlM"/>
+                                            <navigationItem title="Search Results" id="Kum-Us-OlM">
+                                                <barButtonItem key="leftBarButtonItem" title="Back" id="QAG-Mv-XpS">
+                                                    <connections>
+                                                        <action selector="goBack:" destination="eSc-9g-P8E" id="TRb-v3-2YX"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" title="Item" image="icon_refresh" id="pqh-aO-MVw"/>
+                                            </navigationItem>
                                         </items>
                                     </navigationBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 item(s) found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hd6-7Z-zPw">
@@ -435,13 +454,6 @@
                                     <constraint firstAttribute="height" constant="390" id="Hkg-fu-eFe"/>
                                 </constraints>
                             </stackView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQV-Qe-vmd">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="New Results" width="336" id="HKF-Ng-dgu"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -454,14 +466,13 @@
                     <connections>
                         <outlet property="collectionView" destination="iM8-ws-1Bq" id="Btx-cZ-jeG"/>
                         <outlet property="flowLayout" destination="6W2-M6-14E" id="uQf-it-YWd"/>
-                        <outlet property="newResultsButton" destination="HKF-Ng-dgu" id="swb-8T-eMM"/>
                         <outlet property="statusLabel" destination="hd6-7Z-zPw" id="KxF-4u-bcb"/>
                         <segue destination="zVw-Pd-X17" kind="show" identifier="" id="7JV-tn-OLk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9FS-oX-DYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1980" y="-323.75"/>
+            <point key="canvasLocation" x="1804" y="-622"/>
         </scene>
         <!--Book Details View Controller-->
         <scene sceneID="ZF1-Te-vTL">
@@ -472,7 +483,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="maT-QF-78u">
-                                <rect key="frame" x="15" y="69" width="384" height="268.66666666666669"/>
+                                <rect key="frame" x="15" y="105" width="384" height="298.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXg-eP-D18">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="20.333333333333332"/>
@@ -481,19 +492,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="inn-f1-yTY">
-                                        <rect key="frame" x="0.0" y="30.333333333333329" width="384" height="127.99999999999999"/>
+                                        <rect key="frame" x="0.0" y="30.333333333333343" width="384" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="dhT-1G-gGM"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsm-TI-ZTq">
-                                        <rect key="frame" x="0.0" y="168.33333333333334" width="384" height="20.333333333333343"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="11" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsm-TI-ZTq">
+                                        <rect key="frame" x="0.0" y="168.33333333333331" width="384" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="101-I6-Nkq"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXV-bh-Ttt">
-                                        <rect key="frame" x="0.0" y="198.66666666666669" width="384" height="30"/>
+                                        <rect key="frame" x="0.0" y="268.33333333333331" width="384" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="DAm-mw-o6f"/>
                                             <constraint firstAttribute="height" constant="30" id="QwJ-Oo-iRP"/>
@@ -503,30 +517,29 @@
                                             <action selector="addToLibraryTapped:" destination="zVw-Pd-X17" eventType="touchUpInside" id="aan-Il-Xua"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VL0-9i-k2t">
-                                        <rect key="frame" x="0.0" y="238.66666666666669" width="384" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="AEz-6J-aE5"/>
-                                            <constraint firstAttribute="height" constant="30" id="mVg-RM-bPc"/>
-                                        </constraints>
-                                        <state key="normal" title="Borrow"/>
-                                        <connections>
-                                            <action selector="borrowFromLibraryTapped:" destination="zVw-Pd-X17" eventType="touchUpInside" id="F7x-g1-sth"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="iXV-bh-Ttt" firstAttribute="leading" secondItem="maT-QF-78u" secondAttribute="leading" id="4Wt-hb-g10"/>
-                                    <constraint firstItem="VL0-9i-k2t" firstAttribute="trailing" secondItem="maT-QF-78u" secondAttribute="trailingMargin" id="AZ9-83-Mu1"/>
-                                    <constraint firstItem="VL0-9i-k2t" firstAttribute="bottom" secondItem="maT-QF-78u" secondAttribute="bottomMargin" id="CW4-BW-jwM"/>
-                                    <constraint firstItem="VL0-9i-k2t" firstAttribute="leading" secondItem="maT-QF-78u" secondAttribute="leadingMargin" id="LrV-sY-Cv4"/>
                                     <constraint firstAttribute="trailing" secondItem="iXV-bh-Ttt" secondAttribute="trailing" id="o0N-iS-gWa"/>
                                 </constraints>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAA-II-EMk">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Add to Library" id="be0-q1-Nvo">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="7T6-ks-d8T">
+                                            <connections>
+                                                <action selector="doCancel:" destination="zVw-Pd-X17" id="ubh-Rt-D41"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="maT-QF-78u" firstAttribute="top" secondItem="HM2-24-eRO" secondAttribute="top" constant="5" id="WE2-Zq-kMT"/>
+                            <constraint firstItem="maT-QF-78u" firstAttribute="top" secondItem="HM2-24-eRO" secondAttribute="top" constant="85" id="WE2-Zq-kMT"/>
                             <constraint firstItem="maT-QF-78u" firstAttribute="leading" secondItem="HM2-24-eRO" secondAttribute="leading" constant="15" id="XHM-QE-t5b"/>
                             <constraint firstItem="HM2-24-eRO" firstAttribute="trailing" secondItem="maT-QF-78u" secondAttribute="trailing" constant="15" id="k74-wN-DcX"/>
                         </constraints>
@@ -537,20 +550,35 @@
                         <outlet property="bookDescriptionLabel" destination="Nsm-TI-ZTq" id="21D-Rk-7Sv"/>
                         <outlet property="bookImageView" destination="inn-f1-yTY" id="nif-oH-CzH"/>
                         <outlet property="bookTitleLabel" destination="CXg-eP-D18" id="8DR-Yf-BSv"/>
-                        <outlet property="borrowButton" destination="VL0-9i-k2t" id="v5h-Ia-eIc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iv3-GN-1LV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2718.75" y="-325"/>
+            <point key="canvasLocation" x="2646" y="-622"/>
         </scene>
         <!--Biblio-->
         <scene sceneID="Eb1-oY-2le">
             <objects>
-                <tabBarController id="vWO-sh-phB" sceneMemberID="viewController">
+                <tabBarController id="vWO-sh-phB" customClass="MainController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Biblio" id="Ga9-AL-AVu">
-                        <barButtonItem key="leftBarButtonItem" title="Signout" id="ZLN-ID-Q3Z"/>
-                        <barButtonItem key="rightBarButtonItem" title="My Profile" id="rgp-7C-o1F"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="ZLN-ID-Q3Z">
+                            <connections>
+                                <action selector="doSignout:" destination="vWO-sh-phB" id="G4T-GP-INa"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Refresh" image="icon_refresh" id="rgp-7C-o1F">
+                                <connections>
+                                    <action selector="doRefresh:" destination="vWO-sh-phB" id="VhV-Y9-gNU"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem id="GiT-UA-qpe"/>
+                            <barButtonItem title="Item" image="icon_addpin" id="nAQ-3W-Cvp">
+                                <connections>
+                                    <segue destination="bUs-XA-qgv" kind="presentation" identifier="addBook" id="GnR-Ki-EJ0"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4B3-1d-jle">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -559,12 +587,15 @@
                     </tabBar>
                     <connections>
                         <segue destination="jpw-0Q-umW" kind="relationship" relationship="viewControllers" id="WEy-ru-czU"/>
-                        <segue destination="bUs-XA-qgv" kind="relationship" relationship="viewControllers" id="n6b-Fo-6gD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYw-Ej-7wr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="3"/>
+            <point key="canvasLocation" x="287" y="1"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_addpin" width="24" height="24"/>
+        <image name="icon_refresh" width="24" height="24"/>
+    </resources>
 </document>

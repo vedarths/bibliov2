@@ -19,6 +19,7 @@ class SearchBookViewController: UIViewController {
     var books: [Book] = []
     var bookItems: [BookItem] = []
     var dataController:DataController!
+    var person: Person?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +48,16 @@ class SearchBookViewController: UIViewController {
             }
         }
     }
+    @IBAction func doCancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     private func showSearchResultsViewController() {
         let searchResultsVc = storyboard!.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
         searchResultsVc.dataController = dataController
         searchResultsVc.bookItems = self.bookItems
         searchResultsVc.searchTitle = self.titleTextField.text
+        searchResultsVc.person = person
         present(searchResultsVc, animated: true, completion: nil)
     }
     

@@ -15,6 +15,7 @@ class SearchResultsViewController: UIViewController {
     var searchTitle: String?
     var bookItems: [BookItem]?
     var books: [Book]?
+    var person : Person?
     var dataController : DataController?
     var fetchResultsController: NSFetchedResultsController<Book>!
     var selected = [IndexPath]()
@@ -48,6 +49,9 @@ class SearchResultsViewController: UIViewController {
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
+    }
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     private func storeBooks(_ books: [BookItem]) {
@@ -103,32 +107,34 @@ extension SearchResultsViewController : UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let sectionInfo = self.fetchResultsController.sections?[section] {
-            return sectionInfo.numberOfObjects
-        }
-        return 0
+//        if let sectionInfo = self.fetchResultsController.sections?[section] {
+//            return sectionInfo.numberOfObjects
+//        }
+        return self.bookItems!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let book = self.fetchResultsController!.object(at: indexPath)
+//        let book = self.fetchResultsController!.object(at: indexPath)
+        let bookItem = bookItems![indexPath.row]
         let bookCell = cell as! BookCell
-        bookCell.imageUrl = book.imageUrl!
-        configImage(using: bookCell, book: book, collectionView: collectionView, index: indexPath)
+        bookCell.imageUrl = (bookItem.volumeInfo!.imageLinks?.thumbnail!)!
+        configImage(using: bookCell, book: bookItem, imageUrl: bookCell.imageUrl, collectionView: collectionView, index: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedBook = fetchResultsController.object(at: indexPath)
+        let bookItem = bookItems![indexPath.row]
         let bookDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "BookDetailsViewController") as? BookDetailsViewController
-        bookDetailsViewController?.book = selectedBook
+        bookDetailsViewController?.book = bookItem
+        bookDetailsViewController?.person = person
+        if let currentCell = collectionView.cellForItem(at: indexPath) as? BookCell {
+           bookDetailsViewController?.image = currentCell.imageView.image
+        }
+        bookDetailsViewController?.dataController = dataController
+        //bookDetailsViewController?.bookDescriptionLabel.text = selectedBook.bookDescription
         present(bookDetailsViewController!, animated: true, completion: nil)
       }
     
-    private func configImage(using cell: BookCell, book: Book, collectionView: UICollectionView, index: IndexPath) {
-        if let imageData = book.image {
-            cell.imageView.image = UIImage(data: Data(referencing: imageData))
-        } else {
-            if let imageUrl = book.imageUrl {
-       
+    private func configImage(using cell: BookCell, book: BookItem, imageUrl: String, collectionView: UICollectionView, index: IndexPath) {
                 BookClient.sharedInstance().getImage(imageUrl: imageUrl) { (data, error) in
                     if let _ = error {
                         DispatchQueue.main.async {
@@ -142,18 +148,16 @@ extension SearchResultsViewController : UICollectionViewDataSource, UICollection
                                     currentCell.imageView.image = UIImage(data: data)
                                 }
                             }
-                            book.image = NSData(data: data)
+                            cell.imageView.image = UIImage(data: data)
                             DispatchQueue.global(qos: .background).async {
                                 DataController.getInstance().autoSaveViewContext()
                             }
                         }
                     }
                 }
-            }
-        }
     }
     
-    private func errorForImageUrl(_ imageUrl: String) {
+    func errorForImageUrl(_ imageUrl: String) {
         if !self.presentingAlert {
             self.showInfo(withTitle: "Error", withMessage: "Error while fetching image for URL: \(imageUrl)", action: {
                 self.presentingAlert = false

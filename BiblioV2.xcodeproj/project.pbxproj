@@ -12,6 +12,8 @@
 		B243C596921F8404361F74CC /* Pods_BiblioV2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0F377DF3AE9BFA843DB8A9 /* Pods_BiblioV2UITests.framework */; };
 		BE242703230984BE009C7F8D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE242702230984BE009C7F8D /* ForgotPasswordViewController.swift */; };
 		BE2427052309A4FE009C7F8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE2427042309A4FD009C7F8D /* GoogleService-Info.plist */; };
+		BE242707230C81EC009C7F8D /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE242706230C81EC009C7F8D /* MainController.swift */; };
+		BE242709230C8602009C7F8D /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE242708230C8602009C7F8D /* ViewManager.swift */; };
 		BE3447D42303C39000262A89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3447D32303C39000262A89 /* LoginViewController.swift */; };
 		BE3447D62303C39D00262A89 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3447D52303C39D00262A89 /* SignupViewController.swift */; };
 		BE3447D92303D14200262A89 /* BiblioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3447D82303D14200262A89 /* BiblioButton.swift */; };
@@ -68,6 +70,8 @@
 		A2FDDE1BD86A58A3471C6092 /* Pods-BiblioV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiblioV2.release.xcconfig"; path = "Pods/Target Support Files/Pods-BiblioV2/Pods-BiblioV2.release.xcconfig"; sourceTree = "<group>"; };
 		BE242702230984BE009C7F8D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		BE2427042309A4FD009C7F8D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BE242706230C81EC009C7F8D /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		BE242708230C8602009C7F8D /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		BE3447D32303C39000262A89 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BE3447D52303C39D00262A89 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		BE3447D82303D14200262A89 /* BiblioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiblioButton.swift; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 				BE3447D32303C39000262A89 /* LoginViewController.swift */,
 				BE3447D52303C39D00262A89 /* SignupViewController.swift */,
 				BE242702230984BE009C7F8D /* ForgotPasswordViewController.swift */,
+				BE242706230C81EC009C7F8D /* MainController.swift */,
+				BE242708230C8602009C7F8D /* ViewManager.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -540,6 +546,8 @@
 				BE242703230984BE009C7F8D /* ForgotPasswordViewController.swift in Sources */,
 				BE3A077A23009C8A00CD956B /* AppDelegate.swift in Sources */,
 				BE3447D62303C39D00262A89 /* SignupViewController.swift in Sources */,
+				BE242707230C81EC009C7F8D /* MainController.swift in Sources */,
+				BE242709230C8602009C7F8D /* ViewManager.swift in Sources */,
 				BE7596F72301FF8100D68580 /* Book + CustomProperties.swift in Sources */,
 				BE7596EC2301FB6A00D68580 /* DataController.swift in Sources */,
 				BE7596F32301FCBA00D68580 /* Person.swift in Sources */,

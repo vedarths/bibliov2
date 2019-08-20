@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 @objc(Book)
 public class Book: NSManagedObject {
@@ -22,10 +23,20 @@ public class Book: NSManagedObject {
             self.author = author
             self.image = nil
             self.imageUrl = imageUrl
-            self.owner = owner
-            self.lender = lender
         } else {
             fatalError("Could not initialise entity Book!")
         }
     }
+    
+    convenience init(book: Book, ownedBy: String, imageUrl: String, context: NSManagedObjectContext) {
+        if let ent = NSEntityDescription.entity(forEntityName: Book.name, in: context) {
+            self.init(entity: ent, insertInto: context)
+            self.id = book.id
+            self.ownedBy = ownedBy
+            self.imageUrl = imageUrl
+        } else {
+            fatalError("Could not initialise entity Book!")
+        }
+    }
+    
 }
