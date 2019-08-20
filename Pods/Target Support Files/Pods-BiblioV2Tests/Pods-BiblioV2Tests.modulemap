@@ -1,0 +1,6 @@
+framework module Pods_BiblioV2Tests {
+  umbrella header "Pods-BiblioV2Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
