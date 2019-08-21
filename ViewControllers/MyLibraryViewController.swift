@@ -8,10 +8,12 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class MyLibraryViewController: UITableViewController {
     
     func doRefresh() {
+        getAllBooks()
         tableView.reloadData()
     }
     
@@ -19,20 +21,46 @@ class MyLibraryViewController: UITableViewController {
     var person : Person?
     var books : [Book]?
     var presentingAlert = false
+    var fetchedResultsViewController: NSFetchedResultsController<Book>!
+    
+    fileprivate func setupFetchedResultsController() {
+        let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchedResultsViewController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController!.viewContext, sectionNameKeyPath: nil, cacheName: "books")
+        do {
+            try fetchedResultsViewController.performFetch()
+        } catch {
+            fatalError("The fetch could not be performed: \(error.localizedDescription)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (books == nil) {
-            books = [Book]()
-        }
+        setupFetchedResultsController()
+        doRefresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        books = appDelegate.books
+        setupFetchedResultsController()
         doRefresh()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        fetchedResultsViewController = nil
+    }
+    
+    private func getAllBooks() -> Void {
+        var books : [Book]?
+        let predicate = NSPredicate(format: "owner == %@", person!.id!)
+        do {
+            books = try dataController!.fetchBooksForPerson(person:person!, predicate)
+        } catch {
+            showError(message: "could not fetch books for person")
+        }
+        self.books = books
     }
     
     private func getImage(imageUrl: String) -> UIImage {
@@ -88,5 +116,9 @@ class MyLibraryViewController: UITableViewController {
                 app.openURL(URL(string: book.imageUrl!)!)
             }
         }
+    }
+    
+    @IBAction func unwindToMyLibraryViewController(_ sender: UIStoryboardSegue) {
+        
     }
 }

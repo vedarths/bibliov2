@@ -27,6 +27,12 @@ class BookDetailsViewController: UIViewController {
         super.viewDidLoad()
         self.updateView()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if (created != nil) {
+        self.showInfo(withMessage: "\(String(describing: created?.title)) was added to your library.")
+        }
+    }
     
     private func updateView() -> Void {
         self.bookTitleLabel.text = book!.volumeInfo?.title
@@ -59,19 +65,14 @@ class BookDetailsViewController: UIViewController {
         }
        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let myLibraryViewController = segue.destination as! MyLibraryViewController
+        myLibraryViewController.doRefresh()
+    }
     @IBAction func addToLibraryTapped(_ sender: Any) {
         createBook()
         updateOwner()
-        // from here I want to get back to the main controller!!! HOW TO DO THIS??
-        // Refresh map and table
-        let navigationController = self.presentingViewController?.presentingViewController?.presentingViewController as! UINavigationController
-        let mainController = navigationController.viewControllers.first as! MainController
-        //todo - sudi - what am I doing wrong here?!!!
-        mainController.doRefresh(nil)
-        mainController.person = person
-        mainController.dataController = dataController
-        present(mainController, animated: true, completion: nil)
-        //self.dismiss(animated: true, completion: nil)
     }
-
+     
 }

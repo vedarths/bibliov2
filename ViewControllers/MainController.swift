@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import CoreData
 
 class MainController: UITabBarController {
     
@@ -19,6 +20,8 @@ class MainController: UITabBarController {
         super.viewDidLoad()
         doRefresh(nil)
     }
+    
+    
     
     @IBAction func doSignout(_ sender: Any) {
         let confirmationAlert = UIAlertController(title: "Logout", message: "Do you really want to logout?", preferredStyle: .alert)
@@ -39,6 +42,8 @@ class MainController: UITabBarController {
         confirmationAlert.addAction(logoutAction)
     }
     
+    
+    
     @IBAction func doRefresh(_ sender: UIBarButtonItem?) {
         let viewManagers = [ViewManager(), ViewManager()]
         
@@ -58,7 +63,8 @@ class MainController: UITabBarController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addBook" {
-            let searchBookViewController = segue.destination as! SearchBookViewController
+            let navigationController = segue.destination as! UINavigationController
+            let searchBookViewController = navigationController.viewControllers[0] as! SearchBookViewController
             searchBookViewController.dataController = self.dataController
             searchBookViewController.person = self.person
         }

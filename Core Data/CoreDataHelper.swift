@@ -64,6 +64,16 @@ extension DataController {
         return person
     }
     
+    func fetchBook(_ predicate: NSPredicate? = nil, id: String) throws -> Book? {
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: Book.name)
+        fr.predicate = predicate
+       
+        guard let book = (try viewContext.fetch(fr) as! [Book]).first else {
+            return nil
+        }
+        return book
+    }
+    
     func createPerson(email: String, title: String, firstname: String, lastname: String) throws -> Void {
         _ = Person(id: email, title: title, firstName: firstname, lastName: lastname, context: viewContext)
         do {
@@ -84,7 +94,10 @@ extension DataController {
     }
     
     func setOwner(book: Book, ownedBy: String, imageUrl: String) throws -> Void {
-        _ = Book(book: book, ownedBy: ownedBy, imageUrl: imageUrl, context: viewContext)
+        if let savedBook = try fetchBook(id: book.id!) {
+            savedBook.setValue(ownedBy, forKey: "ownedBy")
+            savedBook.setValue(imageUrl, forKey: "imageUrl")
+        }
         do {
             try viewContext.save()
         } catch {
