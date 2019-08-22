@@ -25,7 +25,6 @@ class SearchResultsViewController: UIViewController {
     var presentingAlert = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        storeBooks(self.bookItems!)
         collectionView.delegate = self
         collectionView.dataSource = self
         updateFlowLayout(view.frame.size)
@@ -52,31 +51,6 @@ class SearchResultsViewController: UIViewController {
     }
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    private func storeBooks(_ books: [BookItem]) {
-        func showErrorMessage(msg: String) {
-            showInfo(withTitle: "Error", withMessage: msg)
-        }
-        for book in books {
-            DispatchQueue.main.async {
-                if let url = book.volumeInfo!.imageLinks?.thumbnail {
-                    
-                    let description = book.volumeInfo?.description
-                    
-                    if description != nil {
-                        _ = Book(id: book.id, title: (book.volumeInfo?.title!)!,
-                                 bookDescription: (book.volumeInfo?.description!)!,
-                                 imageUrl: url, author: book.volumeInfo!.authors![0], context: DataController.getInstance().viewContext)
-                    } else {
-                        _ = Book(id: book.id, title: (book.volumeInfo?.title!)!,
-                                 bookDescription: "",
-                                 imageUrl: url, author: book.volumeInfo!.authors![0], context: DataController.getInstance().viewContext)
-                    }
-                    DataController.getInstance().autoSaveViewContext()
-                }
-            }
-        }
     }
     
     private func updateFlowLayout(_ withSize: CGSize) {
@@ -107,18 +81,18 @@ extension SearchResultsViewController : UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if let sectionInfo = self.fetchResultsController.sections?[section] {
-//            return sectionInfo.numberOfObjects
-//        }
         return self.bookItems!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        let book = self.fetchResultsController!.object(at: indexPath)
         let bookItem = bookItems![indexPath.row]
         let bookCell = cell as! BookCell
-        bookCell.imageUrl = (bookItem.volumeInfo!.imageLinks?.thumbnail!)!
-        configImage(using: bookCell, book: bookItem, imageUrl: bookCell.imageUrl, collectionView: collectionView, index: indexPath)
+        if (bookItem.volumeInfo != nil && bookItem.volumeInfo?.imageLinks != nil && bookItem.volumeInfo?.imageLinks?.thumbnail != nil) {
+            bookCell.imageUrl = (bookItem.volumeInfo!.imageLinks?.thumbnail!)!
+            configImage(using: bookCell, book: bookItem, imageUrl: bookCell.imageUrl, collectionView: collectionView, index: indexPath)
+        } else {
+            bookCell.imageView.image = UIImage(named: "unavailable")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -129,8 +103,6 @@ extension SearchResultsViewController : UICollectionViewDataSource, UICollection
         if let currentCell = collectionView.cellForItem(at: indexPath) as? BookCell {
            bookDetailsViewController?.image = currentCell.imageView.image
         }
-        bookDetailsViewController?.dataController = dataController
-        //bookDetailsViewController?.bookDescriptionLabel.text = selectedBook.bookDescription
         present(bookDetailsViewController!, animated: true, completion: nil)
       }
     

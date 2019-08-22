@@ -20,7 +20,6 @@ class BookDetailsViewController: UIViewController {
     var book: BookItem?
     var created : Book?
     var person: Person?
-    var dataController: DataController?
     var image: UIImage?
     
     override func viewDidLoad() {
@@ -30,7 +29,7 @@ class BookDetailsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if (created != nil) {
-        self.showInfo(withMessage: "\(String(describing: created?.title)) was added to your library.")
+           self.showInfo(withMessage: "\(String(describing: created?.title)) was added to your library.")
         }
     }
     
@@ -41,29 +40,18 @@ class BookDetailsViewController: UIViewController {
     }
     
     private func createBook() -> Void {
-        performUIUpdatesOnMain {
+      
             do {
-                let book = try self.dataController!.createBook(id: self.book!.id, title: (self.book!.volumeInfo?.title)!, bookDescription: (self.book?.volumeInfo?.description)!, imageUrl: (self.book?.volumeInfo?.imageLinks?.thumbnail)!, author: (self.book?.volumeInfo?.authors![0])!)
-                 self.created = book
+                let createdBook = try DataController.getInstance().createBook(id: self.book!.id, title: (self.book!.volumeInfo?.title)!, bookDescription: (self.book?.volumeInfo?.description)!, imageUrl: (self.book?.volumeInfo?.imageLinks?.thumbnail)!, ownedBy: person!.id!, author: (self.book?.volumeInfo?.authors![0])!)
+                 self.created = createdBook
             } catch {
                 fatalError("Could not create book: \(error.localizedDescription)")
             }
-        }
+        
     }
     
     @IBAction func doCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    private func updateOwner() -> Void {
-        performUIUpdatesOnMain {
-            do {
-                try self.dataController!.setOwner(book: self.created!, ownedBy: self.person!.id!, imageUrl: self.created!.imageUrl!)
-            } catch {
-                fatalError("Could not assign owner to the book: \(error.localizedDescription)")
-            }
-        }
-       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,7 +60,5 @@ class BookDetailsViewController: UIViewController {
     }
     @IBAction func addToLibraryTapped(_ sender: Any) {
         createBook()
-        updateOwner()
     }
-     
 }

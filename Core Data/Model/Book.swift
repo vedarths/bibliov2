@@ -14,7 +14,7 @@ import UIKit
 public class Book: NSManagedObject {
     static let name = "Book"
     
-    convenience init(id: String, title: String, bookDescription: String, imageUrl: String, author: String, context: NSManagedObjectContext) {
+    convenience init(id: String, title: String, bookDescription: String, imageUrl: String, author: String, ownedBy: String, context: NSManagedObjectContext) {
         if let ent = NSEntityDescription.entity(forEntityName: Book.name, in: context) {
             self.init(entity: ent, insertInto: context)
             self.id = id
@@ -23,17 +23,7 @@ public class Book: NSManagedObject {
             self.author = author
             self.image = nil
             self.imageUrl = imageUrl
-        } else {
-            fatalError("Could not initialise entity Book!")
-        }
-    }
-    
-    convenience init(book: Book, ownedBy: String, imageUrl: String, context: NSManagedObjectContext) {
-        if let ent = NSEntityDescription.entity(forEntityName: Book.name, in: context) {
-            self.init(entity: ent, insertInto: context)
-            self.id = book.id
             self.ownedBy = ownedBy
-            self.imageUrl = imageUrl
         } else {
             fatalError("Could not initialise entity Book!")
         }

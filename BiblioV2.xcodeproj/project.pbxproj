@@ -42,6 +42,8 @@
 		BE7596F32301FCBA00D68580 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596F22301FCBA00D68580 /* Person.swift */; };
 		BE7596F52301FF7300D68580 /* Person +  CustomProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596F42301FF7300D68580 /* Person +  CustomProperties.swift */; };
 		BE7596F72301FF8100D68580 /* Book + CustomProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7596F62301FF8100D68580 /* Book + CustomProperties.swift */; };
+		BEDA3A77230DE10E008F032F /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA3A76230DE10E008F032F /* BookTableViewCell.swift */; };
+		BEDA3A7A230DE4E2008F032F /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA3A79230DE4E2008F032F /* Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		BE7596F22301FCBA00D68580 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		BE7596F42301FF7300D68580 /* Person +  CustomProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person +  CustomProperties.swift"; sourceTree = "<group>"; };
 		BE7596F62301FF8100D68580 /* Book + CustomProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book + CustomProperties.swift"; sourceTree = "<group>"; };
+		BEDA3A76230DE10E008F032F /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		BEDA3A79230DE4E2008F032F /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		DCE71DF22E46B7249720345A /* Pods_BiblioV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BiblioV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1625E19741D09BC2688A7CC /* Pods-BiblioV2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiblioV2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BiblioV2Tests/Pods-BiblioV2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F6857D6B87CF3E3BABFDF797 /* Pods_BiblioV2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BiblioV2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +177,7 @@
 		BE3A076D23009C8A00CD956B = {
 			isa = PBXGroup;
 			children = (
+				BEDA3A78230DE4CF008F032F /* Protocols */,
 				BE7596E72301FB3700D68580 /* Core Data */,
 				BE7596E42301F8C000D68580 /* Biblio.xcdatamodeld */,
 				BE7596E02301D8A100D68580 /* GCDBlackbox.swift */,
@@ -270,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				BE7596DE2300B04400D68580 /* BookCell.swift */,
+				BEDA3A76230DE10E008F032F /* BookTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +300,14 @@
 				BE7596F62301FF8100D68580 /* Book + CustomProperties.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BEDA3A78230DE4CF008F032F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BEDA3A79230DE4E2008F032F /* Cell.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -536,6 +550,7 @@
 				BE3447D92303D14200262A89 /* BiblioButton.swift in Sources */,
 				BE7596F52301FF7300D68580 /* Person +  CustomProperties.swift in Sources */,
 				BE3A07B52300AD7500CD956B /* BookClientOperations.swift in Sources */,
+				BEDA3A7A230DE4E2008F032F /* Cell.swift in Sources */,
 				BE3447D42303C39000262A89 /* LoginViewController.swift in Sources */,
 				BE3A07AE2300A7EA00CD956B /* MyLibraryViewController.swift in Sources */,
 				BE7596F12301FC5D00D68580 /* Book.swift in Sources */,
@@ -549,6 +564,7 @@
 				BE242707230C81EC009C7F8D /* MainController.swift in Sources */,
 				BE242709230C8602009C7F8D /* ViewManager.swift in Sources */,
 				BE7596F72301FF8100D68580 /* Book + CustomProperties.swift in Sources */,
+				BEDA3A77230DE10E008F032F /* BookTableViewCell.swift in Sources */,
 				BE7596EC2301FB6A00D68580 /* DataController.swift in Sources */,
 				BE7596F32301FCBA00D68580 /* Person.swift in Sources */,
 				BE3A07B32300AD6600CD956B /* BookConstants.swift in Sources */,

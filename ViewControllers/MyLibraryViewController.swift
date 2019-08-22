@@ -10,26 +10,28 @@ import Foundation
 import UIKit
 import CoreData
 
-class MyLibraryViewController: UITableViewController {
+class MyLibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func doRefresh() {
         getAllBooks()
         tableView.reloadData()
     }
+    @IBOutlet var tableView: UITableView!
     
-    var dataController: DataController?
     var person : Person?
     var books : [Book]?
     var presentingAlert = false
-    var fetchedResultsViewController: NSFetchedResultsController<Book>!
+    var fetchedResultsController: NSFetchedResultsController<Book>!
     
     fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
+        //let predicate = NSPredicate(format: "owner == %@", person!.id!)
+        //fetchRequest.predicate = predicate
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchedResultsViewController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController!.viewContext, sectionNameKeyPath: nil, cacheName: "books")
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.getInstance().viewContext, sectionNameKeyPath: nil, cacheName: "books")
         do {
-            try fetchedResultsViewController.performFetch()
+            try fetchedResultsController.performFetch()
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -38,25 +40,20 @@ class MyLibraryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFetchedResultsController()
+        tableView.dataSource = self
+        tableView.delegate = self
         doRefresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFetchedResultsController()
-        doRefresh()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        fetchedResultsViewController = nil
     }
     
     private func getAllBooks() -> Void {
         var books : [Book]?
-        let predicate = NSPredicate(format: "owner == %@", person!.id!)
         do {
-            books = try dataController!.fetchBooksForPerson(person:person!, predicate)
+            books = try DataController.getInstance().fetchBooksForPerson(personId:person!.id!)
         } catch {
             showError(message: "could not fetch books for person")
         }
@@ -84,6 +81,17 @@ class MyLibraryViewController: UITableViewController {
         return downloadedImage!
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if (fetchedResultsController.sections!.count > 0) {
+           return fetchedResultsController.sections?.count ?? 1
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultsController.sections?[0].numberOfObjects ?? 0
+    }
+    
     func errorForImageUrl(_ imageUrl: String) {
         if !self.presentingAlert {
             self.showInfo(withTitle: "Error", withMessage: "Error while fetching image for URL: \(imageUrl)", action: {
@@ -92,31 +100,24 @@ class MyLibraryViewController: UITableViewController {
         }
         self.presentingAlert = true
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (books != nil) {
-         return books!.count
-        }
-        return 0
-    }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BookTabCell")!
-        let book = self.books![(indexPath as NSIndexPath).row]
-        
-        cell.textLabel?.text = "\(String(describing: book.title))"
-        cell.imageView?.image = getImage(imageUrl: book.imageUrl!)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let aBook = fetchedResultsController.object(at: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.defaultReuseIdentifier, for: indexPath) as! BookTableViewCell
+        // Configure cell
+        cell.titleLabel.text = aBook.title
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let app = UIApplication.shared
-        let book = books![(indexPath as NSIndexPath).row]
-        if let mediaUrlValue = book.imageUrl as String?,  mediaUrlValue.isEmpty == false {
-            if (self.verifyUrl(urlString: mediaUrlValue)) {
-                app.openURL(URL(string: book.imageUrl!)!)
-            }
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let app = UIApplication.shared
+//        let book = books![(indexPath as NSIndexPath).row]
+//        if let mediaUrlValue = book.imageUrl as String?,  mediaUrlValue.isEmpty == false {
+//            if (self.verifyUrl(urlString: mediaUrlValue)) {
+//                app.openURL(URL(string: book.imageUrl!)!)
+//            }
+//        }
+//    }
     
     @IBAction func unwindToMyLibraryViewController(_ sender: UIStoryboardSegue) {
         

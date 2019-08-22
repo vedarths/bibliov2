@@ -60,8 +60,5 @@ class SearchBookViewController: UIViewController {
         searchResultsVc.person = person
         present(searchResultsVc, animated: true, completion: nil)
     }
-    
-   
- 
 }
 

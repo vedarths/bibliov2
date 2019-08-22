@@ -15,8 +15,9 @@ extension BookClient {
         //get any random page
         
         let parameters = [
-            "q"        : title
-        ]
+            "q"        : title,
+            "maxResults" : 40
+            ] as [String : Any]
         
         _ = taskForGETMethod(parameters: parameters as [String : AnyObject]) { (data, error) in
             if let error = error {
@@ -29,8 +30,8 @@ extension BookClient {
                 return
             }
             do {
-                let photosParser = try JSONDecoder().decode(BookVolumeParser.self, from: data )
-                completion(photosParser, nil)
+                let bookVolumeParser = try JSONDecoder().decode(BookVolumeParser.self, from: data )
+                completion(bookVolumeParser, nil)
             } catch {
                 print("\(#function) error: \(error)")
                 completion(nil, error)

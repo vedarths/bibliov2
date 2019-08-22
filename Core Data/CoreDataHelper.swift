@@ -34,19 +34,20 @@ extension DataController {
         try viewContext.save()
     }
     
-    func fetchBooksForPerson(person: Person, _ predicate: NSPredicate, sorting: NSSortDescriptor? = nil) throws -> [Book]? {
+    func fetchBooksForPerson(personId: String, sorting: NSSortDescriptor? = nil) throws -> [Book]? {
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: Book.name)
-        fr.predicate = predicate
+       // fr.predicate = NSPredicate(format: "owner == %@", personId)
         if let sorting = sorting {
             fr.sortDescriptors = [sorting]
         }
         guard let books = try viewContext.fetch(fr) as? [Book] else {
             return nil
         }
-        var booksForPerson : [Book]?
+        var booksForPerson = [Book]()
         for book in books {
-            if (book.ownedBy == person.id) {
-                booksForPerson?.append(book)
+            if (book.ownedBy == personId) {
+                print("found book with title \(String(describing: book.title)) owned by person id \(personId)")
+                booksForPerson.append(book)
             }
         }
         return booksForPerson
@@ -83,27 +84,16 @@ extension DataController {
         }
     }
     
-    func createBook(id: String, title: String, bookDescription: String, imageUrl: String, author: String) throws -> Book {
-        let book = Book(id: id, title: title, bookDescription: bookDescription, imageUrl: imageUrl, author: author, context: viewContext)
+    func createBook(id: String, title: String, bookDescription: String, imageUrl: String, ownedBy:String, author: String) throws -> Book {
+        let created = Book(id: id, title: title, bookDescription: bookDescription, imageUrl: imageUrl, author: author, ownedBy: ownedBy, context: viewContext)
         do {
             try viewContext.save()
         } catch {
             print("Error while saving Book: \(error)")
         }
-        return book
+        return created
     }
     
-    func setOwner(book: Book, ownedBy: String, imageUrl: String) throws -> Void {
-        if let savedBook = try fetchBook(id: book.id!) {
-            savedBook.setValue(ownedBy, forKey: "ownedBy")
-            savedBook.setValue(imageUrl, forKey: "imageUrl")
-        }
-        do {
-            try viewContext.save()
-        } catch {
-            print("Error while setting Book owner: \(error)")
-        }
-    }
 }
 
     

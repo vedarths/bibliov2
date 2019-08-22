@@ -35,17 +35,24 @@ class LoginViewController : UIViewController {
     
     private func completeLogin() {
          fetchPerson()
+        if (self.person == nil) {
+            do {
+                try dataController?.createPerson(email: self.userNameTextField.text!, title: "Mr.", firstname: "John", lastname: "Doe")
+            } catch {
+                print("\(#function) error:\(error)")
+                showInfo(withTitle: "Error", withMessage: "Error while saving Person into disk: \(error)")
+            }
+        }
          let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
          let mainController = navigationContoller.viewControllers.first as! MainController
          mainController.dataController = dataController
          mainController.person = person
          let myLibraryViewController = mainController.viewControllers![0] as! MyLibraryViewController
-         myLibraryViewController.dataController = dataController
          myLibraryViewController.person = person
 //         let searchBookViewController = mainController.viewControllers![1] as! SearchBookViewController
 //         searchBookViewController.dataController = dataController
 //         searchBookViewController.person = person
-         present(navigationContoller, animated: true, completion: nil)
+         present(navigationContoller, animated: false, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,6 +67,11 @@ class LoginViewController : UIViewController {
         if (username != "") {
             do {
                 let person = try dataController!.fetchPerson(id: username, entityName: "Person")
+                if (person == nil) {
+                    self.showError(message: "Could not signin user, please contact support!")
+                    self.dismiss(animated: true, completion: nil)
+                    return
+                }
                 self.person = person!
             } catch {
                  fatalError("The fetch could not be performed: \(error.localizedDescription)")
