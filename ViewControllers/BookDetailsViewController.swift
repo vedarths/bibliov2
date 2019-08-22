@@ -28,9 +28,6 @@ class BookDetailsViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if (created != nil) {
-           self.showInfo(withMessage: "\(String(describing: created?.title)) was added to your library.")
-        }
     }
     
     private func updateView() -> Void {
@@ -42,7 +39,23 @@ class BookDetailsViewController: UIViewController {
     private func createBook() -> Void {
       
             do {
-                let createdBook = try DataController.getInstance().createBook(id: self.book!.id, title: (self.book!.volumeInfo?.title)!, bookDescription: (self.book?.volumeInfo?.description)!, imageUrl: (self.book?.volumeInfo?.imageLinks?.thumbnail)!, ownedBy: person!.id!, author: (self.book?.volumeInfo?.authors![0])!)
+                var authors = "Not available"
+                if (self.book?.volumeInfo?.authors != nil) {
+                    authors = (self.book?.volumeInfo?.authors![0])!
+                }
+                var imageUrl = ""
+                if (self.book?.volumeInfo?.imageLinks != nil && self.book?.volumeInfo?.imageLinks?.thumbnail != nil) {
+                    imageUrl = ((self.book?.volumeInfo?.imageLinks?.thumbnail)!)
+                }
+                var description = "Not available"
+                if (self.book?.volumeInfo?.description != nil) {
+                    description = (self.book?.volumeInfo?.description)!
+                }
+                var title = "Unknown"
+                if (self.book!.volumeInfo?.title != nil) {
+                    title = (self.book!.volumeInfo?.title)!
+                }
+                let createdBook = try DataController.getInstance().createBook(id: self.book!.id, title: title, bookDescription: description, imageUrl: imageUrl, ownedBy: person!.id!, author:authors)
                  self.created = createdBook
             } catch {
                 fatalError("Could not create book: \(error.localizedDescription)")
