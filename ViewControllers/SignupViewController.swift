@@ -12,9 +12,7 @@ import CoreData
 
 
 class SignupViewController: UIViewController {
-    
-    var dataController: DataController?
- 
+
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailAddressTextField: UITextField!
@@ -29,7 +27,7 @@ class SignupViewController: UIViewController {
         let fetchRequest:NSFetchRequest<Person> = Person.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController!.viewContext, sectionNameKeyPath: nil, cacheName: "person")
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.getInstance().viewContext, sectionNameKeyPath: nil, cacheName: "person")
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -61,13 +59,18 @@ class SignupViewController: UIViewController {
     
     private func completeSignup() {
         do {
-        try dataController?.createPerson(email: self.getUserName(), title: "", firstname: getFirstName(), lastname: getLastName())
+        try DataController.getInstance().createPerson(email: self.getUserName(), title: "", firstname: getFirstName(), lastname: getLastName())
         } catch {
             print("\(#function) error:\(error)")
             showInfo(withTitle: "Error", withMessage: "Error while saving Person into disk: \(error)")
         }
         let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
-        present(navigationContoller, animated: true, completion: nil)
+        let mainController = navigationContoller.viewControllers.first as! MainController
+        let person = fetchPerson(username: getUserName())
+        mainController.person = person
+        let myLibraryViewController = mainController.viewControllers![0] as! MyLibraryViewController
+        myLibraryViewController.person = person
+        present(navigationContoller, animated: false, completion: nil)
     }
     
     @IBAction func doSignup(_ sender: Any) {

@@ -36,7 +36,7 @@ extension DataController {
     
     func fetchBooksForPerson(personId: String, sorting: NSSortDescriptor? = nil) throws -> [Book]? {
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: Book.name)
-       // fr.predicate = NSPredicate(format: "owner == %@", personId)
+
         if let sorting = sorting {
             fr.sortDescriptors = [sorting]
         }
@@ -59,20 +59,17 @@ extension DataController {
         if let sorting = sorting {
             fr.sortDescriptors = [sorting]
         }
-        guard let person = (try viewContext.fetch(fr) as! [Person]).first else {
+        guard let persons = try viewContext.fetch(fr) as? [Person] else {
             return nil
         }
-        return person
-    }
-    
-    func fetchBook(_ predicate: NSPredicate? = nil, id: String) throws -> Book? {
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: Book.name)
-        fr.predicate = predicate
-       
-        guard let book = (try viewContext.fetch(fr) as! [Book]).first else {
-            return nil
+        var foundPerson : Person?
+        for person in persons {
+            if (person.id == id) {
+                foundPerson = person
+                break
+            }
         }
-        return book
+        return foundPerson
     }
     
     func createPerson(email: String, title: String, firstname: String, lastname: String) throws -> Void {

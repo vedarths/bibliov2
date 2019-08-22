@@ -18,7 +18,6 @@ class SearchBookViewController: UIViewController {
     var totalTitles: Int? = nil
     var books: [Book] = []
     var bookItems: [BookItem] = []
-    var dataController:DataController!
     var person: Person?
     
     override func viewDidLoad() {
@@ -58,7 +57,6 @@ class SearchBookViewController: UIViewController {
     
     private func showSearchResultsViewController() {
         let searchResultsVc = storyboard!.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
-        searchResultsVc.dataController = dataController
         searchResultsVc.bookItems = self.bookItems
         searchResultsVc.searchTitle = self.titleTextField.text
         searchResultsVc.person = person

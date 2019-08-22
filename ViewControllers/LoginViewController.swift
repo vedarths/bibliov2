@@ -11,8 +11,6 @@ import UIKit
 
 class LoginViewController : UIViewController {
     
-    var dataController: DataController?
-    var person: Person?
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -34,10 +32,11 @@ class LoginViewController : UIViewController {
     }
     
     private func completeLogin() {
-         fetchPerson()
-        if (self.person == nil) {
+        let person = fetchPerson(username: getUserName())
+        if (person == nil) {
             do {
-                try dataController?.createPerson(email: self.userNameTextField.text!, title: "Mr.", firstname: "John", lastname: "Doe")
+                //todo - find a way to delete fire base user after deleting core data?!! - until then use the below hack
+                try DataController.getInstance().createPerson(email: self.userNameTextField.text!, title: "Mr.", firstname: "John", lastname: "Doe")
             } catch {
                 print("\(#function) error:\(error)")
                 showInfo(withTitle: "Error", withMessage: "Error while saving Person into disk: \(error)")
@@ -45,39 +44,12 @@ class LoginViewController : UIViewController {
         }
          let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
          let mainController = navigationContoller.viewControllers.first as! MainController
-         mainController.dataController = dataController
          mainController.person = person
          let myLibraryViewController = mainController.viewControllers![0] as! MyLibraryViewController
          myLibraryViewController.person = person
-//         let searchBookViewController = mainController.viewControllers![1] as! SearchBookViewController
-//         searchBookViewController.dataController = dataController
-//         searchBookViewController.person = person
          present(navigationContoller, animated: false, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "forgotPaswordFlow" {
-            let forgotPassworVc = segue.destination as! ForgotPasswordViewController
-            forgotPassworVc.dataController = self.dataController
-        }
-    }
-    
-    func fetchPerson() -> Void {
-        let username = getUserName()
-        if (username != "") {
-            do {
-                let person = try dataController!.fetchPerson(id: username, entityName: "Person")
-                if (person == nil) {
-                    self.showError(message: "Could not signin user, please contact support!")
-                    self.dismiss(animated: true, completion: nil)
-                    return
-                }
-                self.person = person!
-            } catch {
-                 fatalError("The fetch could not be performed: \(error.localizedDescription)")
-            }
-        }
-    }
     
     @IBAction func doLogin(_ sender: Any) {
         UserManagementClient.sharedInstance().signIn(self) { (success, errorString) in
@@ -92,11 +64,11 @@ class LoginViewController : UIViewController {
     }
     
     @IBAction func doForgotPassword(_ sender: Any) {
-        
+        let forgotPasswordViewController = storyboard!.instantiateViewController(withIdentifier: "forgotPasswordViewController") as! ForgotPasswordViewController
+        present(forgotPasswordViewController, animated: true, completion: nil)
     }
     @IBAction func doSignup(_ sender: Any) {
         let signupViewController = storyboard!.instantiateViewController(withIdentifier: "signupViewController") as! SignupViewController
-        signupViewController.dataController = dataController!
         present(signupViewController, animated: true, completion: nil)
     }
 }

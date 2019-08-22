@@ -25,11 +25,12 @@ class MyLibraryViewController: UIViewController, UITableViewDelegate, UITableVie
     
     fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
-        //let predicate = NSPredicate(format: "owner == %@", person!.id!)
-        //fetchRequest.predicate = predicate
-        let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+        let predicate = NSPredicate(format: "ownedBy == %@", person!.id!)
+        fetchRequest.predicate = predicate
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.getInstance().viewContext, sectionNameKeyPath: nil, cacheName: "books")
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:DataController.getInstance().viewContext, sectionNameKeyPath: nil, cacheName: "books")
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -39,6 +40,8 @@ class MyLibraryViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.titleView = UIImageView(image: UIImage(named: "book"))
+        navigationItem.rightBarButtonItem = editButtonItem
         setupFetchedResultsController()
         tableView.dataSource = self
         tableView.delegate = self
@@ -109,17 +112,7 @@ class MyLibraryViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let app = UIApplication.shared
-//        let book = books![(indexPath as NSIndexPath).row]
-//        if let mediaUrlValue = book.imageUrl as String?,  mediaUrlValue.isEmpty == false {
-//            if (self.verifyUrl(urlString: mediaUrlValue)) {
-//                app.openURL(URL(string: book.imageUrl!)!)
-//            }
-//        }
-//    }
-    
     @IBAction func unwindToMyLibraryViewController(_ sender: UIStoryboardSegue) {
-        
+        //placeholder method to go to the my library view controller upon exit
     }
 }

@@ -42,5 +42,15 @@ extension UIViewController {
         return UIApplication.shared.canOpenURL(url)
     }
     
-    
+    func fetchPerson(username: String) -> Person? {
+        var person: Person? = nil
+        if (username != "") {
+            do {
+                person = try DataController.getInstance().fetchPerson(id: username, entityName: "Person")!
+            } catch {
+                fatalError("The fetch could not be performed: \(error.localizedDescription)")
+            }
+        }
+        return person
+    }
 }

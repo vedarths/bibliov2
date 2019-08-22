@@ -145,7 +145,6 @@
                                 </state>
                                 <connections>
                                     <action selector="doForgotPassword:" destination="uRy-3Z-P7J" eventType="touchUpInside" id="lBe-Jb-Xhq"/>
-                                    <segue destination="GwK-aj-vDt" kind="show" identifier="forgotPaswordFlow" id="pLH-Ob-GTs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehU-CI-FXY">
@@ -227,7 +226,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="Itv-g4-GdB">
             <objects>
-                <viewController storyboardIdentifier="ForgotPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GwK-aj-vDt" customClass="ForgotPasswordViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="forgotPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GwK-aj-vDt" customClass="ForgotPasswordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ikF-UZ-2np">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,38 +295,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookTableViewCell" id="FvU-TN-b7d" customClass="BookTableViewCell" customModule="BiblioV2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookTableViewCell" rowHeight="59" id="FvU-TN-b7d" customClass="BookTableViewCell" customModule="BiblioV2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FvU-TN-b7d" id="AUO-fl-724">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="58.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7r-hE-1zc">
-                                            <rect key="frame" x="20" y="11" width="200" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="200" height="36"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="ydP-8Y-Wnk"/>
+                                                <constraint firstAttribute="width" constant="200" id="vIG-zf-WaP"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvN-ma-00Y">
-                                            <rect key="frame" x="353" y="11" width="55" height="30"/>
-                                            <state key="normal" title="Remove"/>
-                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="kvN-ma-00Y" firstAttribute="top" secondItem="g7r-hE-1zc" secondAttribute="top" id="04Z-sQ-30b"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="kvN-ma-00Y" secondAttribute="bottom" constant="-8" id="BQ3-zh-VgJ"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="kvN-ma-00Y" secondAttribute="trailing" constant="-14" id="Ynb-X3-k03"/>
-                                        <constraint firstItem="g7r-hE-1zc" firstAttribute="leading" secondItem="AUO-fl-724" secondAttribute="leadingMargin" id="cMA-lM-nlh"/>
-                                        <constraint firstItem="kvN-ma-00Y" firstAttribute="top" secondItem="AUO-fl-724" secondAttribute="topMargin" id="e4m-iq-q3m"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="g7r-hE-1zc" secondAttribute="bottom" constant="1" id="gi1-Vv-07H"/>
+                                        <constraint firstItem="g7r-hE-1zc" firstAttribute="top" secondItem="AUO-fl-724" secondAttribute="topMargin" id="C7Y-zW-Bqy"/>
+                                        <constraint firstItem="g7r-hE-1zc" firstAttribute="leading" secondItem="AUO-fl-724" secondAttribute="leadingMargin" id="g0v-ia-PBM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="g7r-hE-1zc" secondAttribute="bottom" constant="1" id="r2g-aL-t0j"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="removeButton" destination="kvN-ma-00Y" id="ZmK-WA-t79"/>
                                     <outlet property="titleLabel" destination="g7r-hE-1zc" id="ZOo-jx-Yl8"/>
                                 </connections>
                             </tableViewCell>
@@ -344,7 +335,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eM-HW-Ys3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056.5217391304348" y="557.60869565217399"/>
+            <point key="canvasLocation" x="1055.072463768116" y="557.60869565217399"/>
         </scene>
         <!--Add Book-->
         <scene sceneID="5cG-sR-EJ6">
@@ -556,7 +547,7 @@
         <!--Biblio-->
         <scene sceneID="Eb1-oY-2le">
             <objects>
-                <tabBarController id="vWO-sh-phB" customClass="MainController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vWO-sh-phB" customClass="MainController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Biblio" id="Ga9-AL-AVu">
                         <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="ZLN-ID-Q3Z">
                             <connections>

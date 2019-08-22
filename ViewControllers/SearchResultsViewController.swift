@@ -16,12 +16,7 @@ class SearchResultsViewController: UIViewController {
     var bookItems: [BookItem]?
     var books: [Book]?
     var person : Person?
-    var dataController : DataController?
     var fetchResultsController: NSFetchedResultsController<Book>!
-    var selected = [IndexPath]()
-    var inserted: [IndexPath]!
-    var deleted: [IndexPath]!
-    var updated: [IndexPath]!
     var presentingAlert = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +37,7 @@ class SearchResultsViewController: UIViewController {
         let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController!.viewContext, sectionNameKeyPath: nil, cacheName: "books")
+        fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.getInstance().viewContext, sectionNameKeyPath: nil, cacheName: "books")
         do {
             try fetchResultsController.performFetch()
         } catch {
@@ -139,43 +134,3 @@ extension SearchResultsViewController : UICollectionViewDataSource, UICollection
     }
 }
 
-extension SearchResultsViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        inserted = [IndexPath]()
-        deleted = [IndexPath]()
-        updated = [IndexPath]()
-    }
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch (type) {
-        case .insert:
-            inserted.append(newIndexPath!)
-            break
-        case .delete:
-            deleted.append(indexPath!)
-            break
-        case .update:
-            updated.append(indexPath!)
-            break
-        case .move:
-            print("Move item.")
-            break
-        @unknown default:
-            print("Default behaviour.")
-            break
-        }
-    }
-    // Handle controller behaviours for insertion, deletion and updates
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        collectionView.performBatchUpdates({() -> Void in
-            for indexPath in self.inserted {
-                self.collectionView.insertItems(at: [indexPath])
-            }
-            for indexPath in self.deleted {
-                self.collectionView.deleteItems(at: [indexPath])
-            }
-            for indexPath in self.updated {
-                self.collectionView.reloadItems(at: [indexPath])
-            }
-        }, completion: nil)
-    }
-}
