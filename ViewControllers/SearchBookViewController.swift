@@ -35,6 +35,10 @@ class SearchBookViewController: UIViewController {
     
     @IBAction func doSearch(_ sender: Any) {
         let title = self.titleTextField.text!
+        if (title == "") {
+            showError(message: "Please enter a valid title", dismissButtonTitle: "OK")
+            return
+        }
         BookClient.sharedInstance().findBy(title: title) { (bookVolumeParsed, error) in
             performUIUpdatesOnMain {
                 if let bookVolumeParsed = bookVolumeParsed {
