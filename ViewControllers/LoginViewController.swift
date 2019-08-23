@@ -23,6 +23,11 @@ class LoginViewController : UIViewController {
         self.passwordTextField.text = ""
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.userNameTextField.text = ""
+        self.passwordTextField.text = ""
+    }
     func getUserName() -> String {
         return (self.userNameTextField?.text)!
     }
