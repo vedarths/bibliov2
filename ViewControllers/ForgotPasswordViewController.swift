@@ -51,4 +51,8 @@ class ForgotPasswordViewController: UIViewController {
         }
         
     }
+    @IBAction func doCancel(_ sender: Any) {
+        let loginViewController = storyboard!.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+        present(loginViewController, animated: true, completion: nil)
+    }
 }

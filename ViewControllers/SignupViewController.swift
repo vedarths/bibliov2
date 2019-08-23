@@ -17,6 +17,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var repeatPasswordTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -74,7 +75,12 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func doSignup(_ sender: Any) {
-        UserManagementClient.sharedInstance().signUp(self) { (success, errorString) in
+        
+        if (self.passwordTextField.text?.trimmingCharacters(in: .whitespaces) != self.repeatPasswordTextField.text!.trimmingCharacters(in: .whitespaces)) {
+            showError(message: "Passwords do not match")
+            return
+        } else {
+            UserManagementClient.sharedInstance().signUp(self) { (success, errorString) in
             performUIUpdatesOnMain {
                 if success {
                     self.completeSignup()
@@ -82,7 +88,8 @@ class SignupViewController: UIViewController {
                     self.showError(message:errorString!)
                 }
             }
-        }
+         }
+      }
     }
     
     @IBAction func doCancel(_ sender: Any) {
