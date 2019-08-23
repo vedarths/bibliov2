@@ -53,6 +53,25 @@ extension DataController {
         return booksForPerson
     }
     
+    func hasBookInLibrary(personId: String, bookId: String) throws -> Bool {
+        do {
+            let books = try fetchBooksForPerson(personId: personId)
+            var matchingBook : Book? = nil
+            for book in books! {
+                if (book.id == bookId) {
+                    matchingBook = book
+                    break
+                }
+            }
+            if (matchingBook != nil) {
+                print("matching book with id \(bookId) found")
+                return true
+            }
+            print("no matching book with id \(bookId) found for person id \(personId)")
+            return false
+        }
+    }
+    
     func fetchPerson(_ predicate: NSPredicate? = nil, id: String, entityName: String, sorting: NSSortDescriptor? = nil) throws -> Person? {
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         fr.predicate = predicate

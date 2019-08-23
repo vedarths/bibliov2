@@ -27,7 +27,6 @@ class BookDetailsViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-
     private func updateView() -> Void {
         self.bookTitleLabel.text = book!.volumeInfo?.title
         self.bookDescriptionLabel.text = book!.volumeInfo?.description
@@ -71,7 +70,19 @@ class BookDetailsViewController: UIViewController {
     }
     
     @IBAction func addToLibrary(_ sender: Any) {
-        createBook()
+        if (!self.bookNotInLibrary()) {
+           createBook()
+        } else {
+            print("This book is already in your library.")
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
+    func bookNotInLibrary() -> Bool {
+        do {
+            return try DataController.getInstance().hasBookInLibrary(personId: person!.id!, bookId: book!.id)
+        } catch {
+            fatalError("Could not verify book in library: \(error.localizedDescription)")
+        }
+    }
 }
