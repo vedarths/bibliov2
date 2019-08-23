@@ -39,7 +39,7 @@ class MainController: UITabBarController {
     @IBAction func doRefresh(_ sender: UIBarButtonItem?) {
         let viewManagers = [ViewManager(), ViewManager()]
         viewManagers[0].showView(view: viewControllers![0].view)
-    }
+        }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addBook" {

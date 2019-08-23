@@ -51,10 +51,11 @@ class SearchBookViewController: UIViewController {
             }
         }
     }
-    @IBAction func doCancel(_ sender: Any) {
+  
+    
+    @IBAction func cancelClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
     private func showSearchResultsViewController() {
         let searchResultsVc = storyboard!.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController
         searchResultsVc.bookItems = self.bookItems

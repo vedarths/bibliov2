@@ -382,7 +382,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search Book" id="vDL-To-Wqh">
                         <barButtonItem key="backBarButtonItem" title="Back" id="DzB-ro-mCB"/>
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="4nR-pa-sgK"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="4nR-pa-sgK">
+                            <connections>
+                                <action selector="cancelClicked:" destination="bUs-XA-qgv" id="9R6-pR-9uk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchButton" destination="9Qk-c7-3R8" id="fih-sH-99e"/>
