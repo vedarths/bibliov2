@@ -51,6 +51,7 @@ class MyLibraryViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFetchedResultsController()
+        doRefresh()
     }
     
     private func getAllBooks() -> Void {
