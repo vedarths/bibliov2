@@ -1,6 +1,6 @@
 This is an app to maintain a personal library catalogue. The following functionalities are provided by this app
 1. Ability to login and signup to the app (Firebase authentication)
-2. Ability to signup to use the app. Please create a login before you use the app by clicking on the signup button.
+2. Ability to signup to use the app. <b>Please create a user before you use the app by clicking on the signup button.</b>
 3. Once Logged in, we will land in the my library (table view controller) screen
 4. There are options to add a book into my library by clicking the + button on top right hand section
 5. By clicking + you will be taken to a search screen where you can out in the book title and hit search
