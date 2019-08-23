@@ -326,11 +326,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7r-hE-1zc">
-                                            <rect key="frame" x="20" y="11" width="200" height="36"/>
+                                            <rect key="frame" x="20" y="11" width="277" height="36"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="vIG-zf-WaP"/>
+                                                <constraint firstAttribute="width" constant="277" id="vIG-zf-WaP"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -358,7 +358,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eM-HW-Ys3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055.072463768116" y="557.60869565217399"/>
+            <point key="canvasLocation" x="1055.072463768116" y="557.14285714285711"/>
         </scene>
         <!--Add Book-->
         <scene sceneID="5cG-sR-EJ6">
@@ -405,7 +405,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search Book" id="vDL-To-Wqh">
                         <barButtonItem key="backBarButtonItem" title="Back" id="DzB-ro-mCB"/>
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="4nR-pa-sgK">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4nR-pa-sgK">
                             <connections>
                                 <action selector="cancelClicked:" destination="bUs-XA-qgv" id="9R6-pR-9uk"/>
                             </connections>
@@ -522,9 +522,14 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Book Details" id="4Pb-10-ztZ">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="J68-m4-YwA">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="J68-m4-YwA">
                                             <connections>
                                                 <action selector="cancelClicled:" destination="zVw-Pd-X17" id="lnb-eL-43e"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="mll-VF-H2H">
+                                            <connections>
+                                                <segue destination="Nge-be-pjg" kind="unwind" unwindAction="unwindToMyLibraryViewController:" id="DNV-Mf-3tP"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -597,14 +602,15 @@
             <objects>
                 <tabBarController storyboardIdentifier="mainController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vWO-sh-phB" customClass="MainController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Biblio" id="Ga9-AL-AVu">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ZLN-ID-Q3Z">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="ZLN-ID-Q3Z">
                             <connections>
                                 <action selector="doSignout:" destination="vWO-sh-phB" id="G4T-GP-INa"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem id="GiT-UA-qpe"/>
-                            <barButtonItem title="Search" id="nAQ-3W-Cvp">
+                            <barButtonItem systemItem="trash" id="fSw-ef-M9h"/>
+                            <barButtonItem systemItem="search" id="nAQ-3W-Cvp">
                                 <connections>
                                     <segue destination="K60-Wr-QGt" kind="presentation" identifier="addBook" id="GnR-Ki-EJ0"/>
                                 </connections>
