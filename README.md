@@ -9,7 +9,6 @@ This is an app to maintain a personal library catalogue. The following functiona
 8. On clicking the "Add Book to Library", you will be taken back to the MyLibrary view, with the book tile populated in the table view controller.This will add the book to the user's library via Coredata objects.
 9. There is an ability to logout of the app on the top left hand section which will take us back to login / signup screen depending on where the journey started. 
 Upon logging back in to the app, you should still be able to see the list of books.
-10. There is an option to refresh the library view using the refresh
 
 Note: The mylibrary screen will always be local to the user. For example. If user 1 has added 3 books with specific titles, this will never be shown to another user (user 2)
 Each user will see only the books that have been added to thier library.
