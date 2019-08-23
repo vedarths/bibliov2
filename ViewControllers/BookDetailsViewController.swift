@@ -13,10 +13,7 @@ class BookDetailsViewController: UIViewController {
     
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var bookDescriptionLabel: UILabel!
-    @IBOutlet weak var addToLibraryButton: UIButton!
-
-    
+    @IBOutlet weak var bookDescriptionLabel: UITextView!
     var book: BookItem?
     var created : Book?
     var person: Person?
@@ -30,6 +27,7 @@ class BookDetailsViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
+
     private func updateView() -> Void {
         self.bookTitleLabel.text = book!.volumeInfo?.title
         self.bookDescriptionLabel.text = book!.volumeInfo?.description
@@ -57,13 +55,13 @@ class BookDetailsViewController: UIViewController {
                 }
                 let createdBook = try DataController.getInstance().createBook(id: self.book!.id, title: title, bookDescription: description, imageUrl: imageUrl, ownedBy: person!.id!, author:authors)
                  self.created = createdBook
+                print("added book to library")
             } catch {
                 fatalError("Could not create book: \(error.localizedDescription)")
             }
         
     }
-    
-    @IBAction func doCancel(_ sender: Any) {
+    @IBAction func cancelClicled(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -71,7 +69,9 @@ class BookDetailsViewController: UIViewController {
         let myLibraryViewController = segue.destination as! MyLibraryViewController
         myLibraryViewController.doRefresh()
     }
-    @IBAction func addToLibraryTapped(_ sender: Any) {
+    
+    @IBAction func addToLibrary(_ sender: Any) {
         createBook()
     }
+    
 }

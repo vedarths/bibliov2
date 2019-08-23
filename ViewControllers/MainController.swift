@@ -17,10 +17,7 @@ class MainController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doRefresh(nil)
     }
-    
-    
     
     @IBAction func doSignout(_ sender: Any) {
         let confirmationAlert = UIAlertController(title: "Logout", message: "Do you really want to logout?", preferredStyle: .actionSheet)
@@ -35,11 +32,6 @@ class MainController: UITabBarController {
         confirmationAlert.addAction(logoutAction)
         confirmationAlert.addAction(cancelAction)
     }
-    
-    @IBAction func doRefresh(_ sender: UIBarButtonItem?) {
-        let viewManagers = [ViewManager(), ViewManager()]
-        viewManagers[0].showView(view: viewControllers![0].view)
-        }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addBook" {

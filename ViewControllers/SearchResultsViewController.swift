@@ -44,10 +44,11 @@ class SearchResultsViewController: UIViewController {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
     }
-    @IBAction func goBack(_ sender: Any) {
+   
+    
+    @IBAction func cancelClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
     private func updateFlowLayout(_ withSize: CGSize) {
         let landscape = withSize.width > withSize.height
         let space: CGFloat = landscape ? 5 : 3
