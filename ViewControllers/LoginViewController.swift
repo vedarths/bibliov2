@@ -48,9 +48,7 @@ class LoginViewController : UIViewController {
             }
         }
          let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
-         let mainController = navigationContoller.viewControllers.first as! MainController
-         mainController.person = person
-         let myLibraryViewController = mainController.viewControllers![0] as! MyLibraryViewController
+         let myLibraryViewController = navigationContoller.viewControllers.first as! MyLibraryViewController
          myLibraryViewController.person = person
          present(navigationContoller, animated: false, completion: nil)
     }

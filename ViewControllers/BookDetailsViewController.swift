@@ -66,7 +66,7 @@ class BookDetailsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let myLibraryViewController = segue.destination as! MyLibraryViewController
-        myLibraryViewController.doRefresh()
+        myLibraryViewController.myLibraryTableView.reloadData()
     }
     
     @IBAction func addToLibrary(_ sender: Any) {

@@ -16,7 +16,6 @@ class SearchBookViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     
     var totalTitles: Int? = nil
-    var books: [Book] = []
     var bookItems: [BookItem] = []
     var person: Person?
     

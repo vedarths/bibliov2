@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcG-1w-I00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1630.4347826086957" y="782.60869565217399"/>
+            <point key="canvasLocation" x="-1801" y="117"/>
         </scene>
         <!--Login-->
         <scene sceneID="TZh-El-tgt">
@@ -215,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pV-Vn-KAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1640.5797101449277" y="0.81521739130434789"/>
+            <point key="canvasLocation" x="-1801" y="-622"/>
         </scene>
         <!--Biblio-->
         <scene sceneID="JQV-zf-oL1">
@@ -226,12 +226,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vWO-sh-phB" kind="relationship" relationship="rootViewController" id="mpI-tu-Cuz"/>
+                        <segue destination="Rqe-qf-F93" kind="relationship" relationship="rootViewController" id="6hb-Jl-Ya4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lk-vN-chN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-736" y="3"/>
+            <point key="canvasLocation" x="-726" y="-622"/>
         </scene>
         <!--Forgot Password View Controller-->
         <scene sceneID="Itv-g4-GdB">
@@ -299,59 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4v-gO-Bj1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-939.13043478260875" y="781.15942028985512"/>
-        </scene>
-        <!--My Library-->
-        <scene sceneID="Haa-AC-uv0">
-            <objects>
-                <tableViewController storyboardIdentifier="MyLibraryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jpw-0Q-umW" customClass="MyLibraryViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tXv-Mm-zHc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="separatorColor" red="0.1028030707" green="0.25646987719999997" blue="0.95674556489999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookTableViewCell" rowHeight="59" id="FvU-TN-b7d" customClass="BookTableViewCell" customModule="BiblioV2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="59"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FvU-TN-b7d" id="AUO-fl-724">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="58.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7r-hE-1zc">
-                                            <rect key="frame" x="20" y="11" width="277" height="36"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="277" id="vIG-zf-WaP"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="g7r-hE-1zc" firstAttribute="top" secondItem="AUO-fl-724" secondAttribute="topMargin" id="C7Y-zW-Bqy"/>
-                                        <constraint firstItem="g7r-hE-1zc" firstAttribute="leading" secondItem="AUO-fl-724" secondAttribute="leadingMargin" id="g0v-ia-PBM"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="g7r-hE-1zc" secondAttribute="bottom" constant="1" id="r2g-aL-t0j"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="titleLabel" destination="g7r-hE-1zc" id="ZOo-jx-Yl8"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="jpw-0Q-umW" id="XPI-S6-I04"/>
-                            <outlet property="delegate" destination="jpw-0Q-umW" id="btz-s0-lPM"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="My Library" id="ala-qv-Oeg"/>
-                    <connections>
-                        <outlet property="tableView" destination="tXv-Mm-zHc" id="ucP-vM-zum"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0eM-HW-Ys3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1055.072463768116" y="557.14285714285711"/>
+            <point key="canvasLocation" x="-770" y="117"/>
         </scene>
         <!--Add Book-->
         <scene sceneID="5cG-sR-EJ6">
@@ -590,61 +538,95 @@
             </objects>
             <point key="canvasLocation" x="3552.1739130434785" y="-622.01086956521749"/>
         </scene>
-        <!--Biblio-->
-        <scene sceneID="Eb1-oY-2le">
+        <!--My Library View Controller-->
+        <scene sceneID="BY6-9W-iBd">
             <objects>
-                <tabBarController storyboardIdentifier="mainController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vWO-sh-phB" customClass="MainController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Biblio" id="Ga9-AL-AVu">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="ZLN-ID-Q3Z">
+                <viewController id="Rqe-qf-F93" customClass="MyLibraryViewController" customModule="BiblioV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jao-Zv-qad"/>
+                        <viewControllerLayoutGuide type="bottom" id="aPO-jX-2q8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UAm-RK-PmP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tel-cK-G4D">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="827"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookTableViewCell" id="Yrn-eG-LxO" customClass="BookTableViewCell" customModule="BiblioV2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yrn-eG-LxO" id="4sp-Jp-QiK">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfo-mP-4CD">
+                                                    <rect key="frame" x="36" y="11.5" width="33.5" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="sfo-mP-4CD" firstAttribute="leading" secondItem="4sp-Jp-QiK" secondAttribute="leadingMargin" constant="16" id="KXc-w0-Sh3"/>
+                                                <constraint firstItem="sfo-mP-4CD" firstAttribute="centerY" secondItem="4sp-Jp-QiK" secondAttribute="centerY" id="jJ8-k6-e4R"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="sfo-mP-4CD" id="YmT-4l-TD7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Rqe-qf-F93" id="fhB-WQ-AyR"/>
+                                    <outlet property="delegate" destination="Rqe-qf-F93" id="TJ8-Nv-QME"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8bW-50-fsU">
+                                <rect key="frame" x="7" y="818" width="407" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Logout" width="449" id="V1Z-Bd-LFL">
+                                        <connections>
+                                            <action selector="doLogout:" destination="Rqe-qf-F93" id="IlU-Vn-L8W"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="search" id="056-gQ-cWX">
+                                        <connections>
+                                            <action selector="doSearch:" destination="Rqe-qf-F93" id="l42-Lb-H23"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Tel-cK-G4D" secondAttribute="trailing" id="OtQ-dG-ymC"/>
+                            <constraint firstItem="Tel-cK-G4D" firstAttribute="leading" secondItem="UAm-RK-PmP" secondAttribute="leading" id="Qjs-UJ-qX0"/>
+                            <constraint firstItem="aPO-jX-2q8" firstAttribute="top" secondItem="Tel-cK-G4D" secondAttribute="bottom" constant="35" id="jxL-Wc-ABE"/>
+                            <constraint firstItem="Tel-cK-G4D" firstAttribute="top" secondItem="UAm-RK-PmP" secondAttribute="top" id="oRr-Yi-CJv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DYJ-I2-IWt"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="PM7-aw-8GO"/>
+                        <barButtonItem title="Add notebook" id="ZqF-1g-XWA">
+                            <color key="tintColor" red="0.003010978457" green="0.70323187109999996" blue="0.89525973800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="doSignout:" destination="vWO-sh-phB" id="G4T-GP-INa"/>
+                                <action selector="addTappedWithSender:" destination="Rqe-qf-F93" id="3bY-CN-bdx"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem id="GiT-UA-qpe"/>
-                            <barButtonItem systemItem="trash" id="fSw-ef-M9h">
-                                <connections>
-                                    <action selector="doDeleteLibrary:" destination="vWO-sh-phB" id="aVE-AU-y8G"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="search" id="nAQ-3W-Cvp">
-                                <connections>
-                                    <segue destination="K60-Wr-QGt" kind="presentation" identifier="addBook" id="GnR-Ki-EJ0"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4B3-1d-jle">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="wWO-VX-spg"/>
                     <connections>
-                        <segue destination="jpw-0Q-umW" kind="relationship" relationship="viewControllers" id="WEy-ru-czU"/>
+                        <outlet property="myLibraryTableView" destination="Tel-cK-G4D" id="ioS-Mh-Q5j"/>
+                        <segue destination="bUs-XA-qgv" kind="show" identifier="showSearchBook" id="ZUJ-WI-bwM"/>
                     </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vYw-Ej-7wr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BaL-eP-hYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="287" y="1"/>
-        </scene>
-        <!--Search-->
-        <scene sceneID="fOG-fQ-VrN">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K60-Wr-QGt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="gs2-hr-h3i" userLabel="Search"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K4s-p5-hPO">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bUs-XA-qgv" kind="relationship" relationship="rootViewController" id="3XB-sS-1yj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uQT-Nt-RjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1073.913043478261" y="-622.01086956521749"/>
+            <point key="canvasLocation" x="523" y="-622"/>
         </scene>
     </scenes>
     <resources>

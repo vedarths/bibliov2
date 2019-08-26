@@ -66,11 +66,9 @@ class SignupViewController: UIViewController {
             showInfo(withTitle: "Error", withMessage: "Error while saving Person into disk: \(error)")
         }
         let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
-        let mainController = navigationContoller.viewControllers.first as! MainController
+        let myLibraryVC = navigationContoller.viewControllers.first as! MyLibraryViewController
         let person = fetchPerson(username: getUserName())
-        mainController.person = person
-        let myLibraryViewController = mainController.viewControllers![0] as! MyLibraryViewController
-        myLibraryViewController.person = person
+        myLibraryVC.person = person
         present(navigationContoller, animated: false, completion: nil)
     }
     

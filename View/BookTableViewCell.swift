@@ -10,8 +10,9 @@ import UIKit
 
 internal final class BookTableViewCell: UITableViewCell, Cell {
     // Outlets
-    @IBOutlet weak var removeButton: UIButton!
+
     @IBOutlet weak var titleLabel: UILabel!
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         titleLabel.text = nil
