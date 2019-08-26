@@ -32,6 +32,32 @@ class MainController: UITabBarController {
         confirmationAlert.addAction(logoutAction)
         confirmationAlert.addAction(cancelAction)
     }
+    @IBAction func doDeleteLibrary(_ sender: Any) {
+        let confirmationAlert = UIAlertController(title: "Purge Library", message: "Do you really want to purge library?", preferredStyle: .actionSheet)
+        
+        self.present(confirmationAlert, animated: true, completion: nil)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            // Return to login screen
+            do {
+                try DataController.getInstance().deleteAllBooksForPerson(personId: self.person!.id!)
+                
+            } catch {
+                self.showError(message: "Fatal error occurred trying to remove books from library!")
+            }
+            self.showInfo(withMessage: "You library has been cleared. Click on the tabbar to refresh!")
+            
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in })
+        confirmationAlert.addAction(yesAction)
+        confirmationAlert.addAction(cancelAction)
+        
+        do {
+            try DataController.getInstance().deleteAllBooksForPerson(personId: person!.id!)
+        } catch {
+            showError(message: "Fatal error occurred trying to remove books from library!")
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addBook" {

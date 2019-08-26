@@ -24,14 +24,14 @@ extension DataController {
         return books
     }
     
-    func deleteAllBooks(books: [Book]) throws -> Void {
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: Book.name)
-        fr.includesPropertyValues = false
-        
-        for book in books {
-            viewContext.delete(book)
+    func deleteAllBooksForPerson(personId: String) throws -> Void {
+        do {
+            let books = try self.fetchBooksForPerson(personId: personId)
+            for book in books! {
+                viewContext.delete(book)
+            }
+            try viewContext.save()
         }
-        try viewContext.save()
     }
     
     func fetchBooksForPerson(personId: String, sorting: NSSortDescriptor? = nil) throws -> [Book]? {
