@@ -14,12 +14,11 @@ class MyLibraryViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var myLibraryTableView: UITableView!
     var person : Person?
-    //var books : [Book]?
     var presentingAlert = false
     var fetchedResultsController: NSFetchedResultsController<Book>!
     
     func refresh() -> Void {
-        //getAllBooks()
+
         myLibraryTableView.reloadData()
     }
     fileprivate func setupFetchedResultsController() {
@@ -77,16 +76,6 @@ class MyLibraryViewController: UIViewController, UITableViewDataSource {
         let bookToDelete = fetchedResultsController.object(at: indexPath)
         DataController.getInstance().viewContext.delete(bookToDelete)
         try? DataController.getInstance().viewContext.save()
-    }
-    
-    private func getAllBooks() -> Void {
-        var books : [Book]?
-        do {
-            books = try DataController.getInstance().fetchBooksForPerson(personId:person!.id!)
-        } catch {
-            showError(message: "could not fetch books for person")
-        }
-        //self.books = books
     }
     
     func updateEditButtonState() {
