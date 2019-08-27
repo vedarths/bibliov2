@@ -1,4 +1,36 @@
-This is an app to maintain a personal library catalogue. The following functionalities are provided by this app
+#. Biblio - A Personal Library Catalogue
+This is an app to maintain a personal library catalogue by searching the title via Google Books API.
+
+# App Features
+The following features are provided by this app
+1. User authentication to maintain a personal library catalogue 
+2. Look up book by Title and add the same to the library
+3. See the list of books in the main page (My library screen)
+4. Remove a title by swiping across a row in the my library view
+5. Logout to protect privacy
+
+# Implementation / Main View controllers:
+1. LoginViewController - Maintains code for providing Login functionality and user authentication management via Firebase
+2. SignUpViewController - Maintains code for signing up a new user to the app (Uses Firebase Authentication)
+3. ForgotPasswordViewController - Maintains code for enabling user to email a password reset link via Firebase authentication
+4. MyLibraryViewController - Subclass of Table view controller and maintains a list of Book titles that belong to the logged in user via CoreData
+5. SearchBookViewController - Provides the ability to search for a title. User can input the title in the text field and click search. Queries GoogleBooks API under the hood to retrieve titles
+6. SearchBookResultsViewController - Displays the search results in a collection view with the item being a book thumbnail (if no image thumbnail is available, a no image available icon is displayed)
+7. BookDetailsViewController - Maintains the logic to view book details such as Image thumbnail, title and description as provided by the Google Books API. Also displays an Add to Library button which upon clicking adds the book to the library and takes them back to the MyLibraryViewController
+
+# How to build/compile
+Open the BiblioV2.xcworkspace file in Xcode, choose a desired simulator device and click on the Run button which should bring up the Login screen.
+
+# Requirements
+Xcode 9.2
+Swift 4.0
+
+......
+
+# License
+This code may be used free of cost for a non-commercial purpose, provided the intended usage is notified to the owner via the below email address.
+
+# App Flow:
 1. Ability to login and signup to the app (Firebase authentication)
 2. Ability to signup to use the app. <b>Please create a user before you use the app by clicking on the signup button.</b>
 3. Once Logged in, we will land in the my library (table view controller) screen
@@ -14,6 +46,7 @@ Note: The mylibrary screen will always be local to the user. For example. If use
 Each user will see only the books that have been added to thier library.
 
 Any questions, please email vedarthsolutions@gmail.com
+
 
 Thank you for trying the app.
 
