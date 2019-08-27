@@ -13,7 +13,6 @@ class BookCell: UICollectionViewCell {
     
     static let identifier = "BookCell"
     var imageUrl: String  = ""
-    
     @IBOutlet weak var imageView: UIImageView!
     
 }

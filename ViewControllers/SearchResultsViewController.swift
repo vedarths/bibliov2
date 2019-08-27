@@ -20,19 +20,19 @@ class SearchResultsViewController: UIViewController {
     var presentingAlert = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        bookCollectionView.delegate = self
+        bookCollectionView.dataSource = self
         updateFlowLayout(view.frame.size)
         setStatusLabel("\(String(describing: self.bookItems!.count)) item(s) found")
         setupFetchedResultsController()
     }
     
-
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    @IBOutlet weak var newResultsButton: UIBarButtonItem!
+    @IBOutlet weak var bookCollectionView: UICollectionView!
     
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    
+    @IBOutlet weak var statusLabelText: UILabel!
+
     fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
@@ -45,25 +45,25 @@ class SearchResultsViewController: UIViewController {
         }
     }
    
-    
-    @IBAction func cancelClicked(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func cancelTapped(_ sender: Any) {
+         dismiss(animated: true, completion: nil)
     }
+    
     private func updateFlowLayout(_ withSize: CGSize) {
         let landscape = withSize.width > withSize.height
         let space: CGFloat = landscape ? 5 : 3
         let items: CGFloat = landscape ? 2 : 3
         let dimension = (withSize.width - ((items + 1) * space)) / items
         
-        flowLayout?.minimumInteritemSpacing = space
-        flowLayout?.minimumLineSpacing = space
-        flowLayout?.itemSize = CGSize(width: dimension, height: dimension)
-        flowLayout?.sectionInset = UIEdgeInsets(top: space, left: space, bottom: space, right: space)
+        collectionViewFlowLayout?.minimumInteritemSpacing = space
+        collectionViewFlowLayout?.minimumLineSpacing = space
+        collectionViewFlowLayout?.itemSize = CGSize(width: dimension, height: dimension)
+        collectionViewFlowLayout?.sectionInset = UIEdgeInsets(top: space, left: space, bottom: space, right: space)
     }
     
     private func setStatusLabel(_ text: String) {
         DispatchQueue.main.async {
-            self.statusLabel.text = text
+            self.statusLabelText.text = text
         }
     }
 }
