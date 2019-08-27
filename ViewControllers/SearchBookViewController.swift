@@ -9,9 +9,11 @@
 import UIKit
 import Foundation
 import CoreData
+import SystemConfiguration
 
 class SearchBookViewController: UIViewController {
 
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
@@ -21,6 +23,7 @@ class SearchBookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.checkReachable())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +35,9 @@ class SearchBookViewController: UIViewController {
     }
     
     @IBAction func doSearch(_ sender: Any) {
+        if (!checkReachable()) {
+            return
+        }
         let title = self.titleTextField.text!
         if (title == "") {
             showError(message: "Please enter a valid title", dismissButtonTitle: "OK")
@@ -53,7 +59,10 @@ class SearchBookViewController: UIViewController {
   
     
     @IBAction func cancelClicked(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        let navigationContoller = storyboard!.instantiateViewController(withIdentifier: "landingNavigationController") as! UINavigationController
+        let myLibraryViewController = navigationContoller.viewControllers.first as! MyLibraryViewController
+        myLibraryViewController.person = person
+        present(navigationContoller, animated: false, completion: nil)
     }
     private func showSearchResultsViewController() {
         let searchResultsVc = storyboard!.instantiateViewController(withIdentifier: "SearchResultsViewController") as! SearchResultsViewController

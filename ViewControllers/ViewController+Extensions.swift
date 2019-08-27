@@ -8,11 +8,33 @@
 
 import Foundation
 import UIKit
+import SystemConfiguration
 
 extension UIViewController {
     
     var appDelegate: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    func checkReachable() -> Bool {
+        var flags = SCNetworkReachabilityFlags()
+        let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com")
+        SCNetworkReachabilityGetFlags(reachability!, &flags)
+        
+        if (!isNetworkReachable(with: flags)) {
+            showError(message: "Please ensure Network connectivity!")
+            print(flags)
+            return false
+        }
+        return true
+    }
+    
+    private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        let canConnectAutomatically = flags.contains(.connectionAutomatic)
+        let canConnectWithoutUserInteraction = canConnectAutomatically && flags.contains(.interventionRequired)
+        return isReachable && (needsConnection || canConnectWithoutUserInteraction)
     }
     
     func showInfo(withTitle: String = "Info", withMessage: String, action: (() -> Void)? = nil) {
