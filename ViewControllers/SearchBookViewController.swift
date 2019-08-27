@@ -69,6 +69,8 @@ class SearchBookViewController: UIViewController {
         searchResultsVc.bookItems = self.bookItems
         searchResultsVc.searchTitle = self.titleTextField.text
         searchResultsVc.person = person
+         let viewManager = ViewManager()
+        viewManager.showView(view: searchResultsVc.view)
         present(searchResultsVc, animated: true, completion: nil)
     }
 }

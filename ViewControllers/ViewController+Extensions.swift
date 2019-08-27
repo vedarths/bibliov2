@@ -12,6 +12,8 @@ import SystemConfiguration
 
 extension UIViewController {
     
+    
+    
     var appDelegate: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
@@ -21,20 +23,28 @@ extension UIViewController {
         let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com")
         SCNetworkReachabilityGetFlags(reachability!, &flags)
         
-        if (!isNetworkReachable(with: flags)) {
+        if (isNetworkReachable(with: flags)) {
+            print(flags)
+            if flags.contains(.isWWAN) {
+                //showInfo(withMessage: "Connected to Internet Via Cellular data")
+                return true
+            }
+            //showInfo(withMessage: "Connected to Internet Via Wifi")
+            return true
+        } else if (!isNetworkReachable(with: flags)) {
             showError(message: "Please ensure Network connectivity!")
             print(flags)
             return false
         }
-        return true
+        return false
     }
     
     private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
         let isReachable = flags.contains(.reachable)
         let needsConnection = flags.contains(.connectionRequired)
-        let canConnectAutomatically = flags.contains(.connectionAutomatic)
-        let canConnectWithoutUserInteraction = canConnectAutomatically && flags.contains(.interventionRequired)
-        return isReachable && (needsConnection || canConnectWithoutUserInteraction)
+        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+        return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
     }
     
     func showInfo(withTitle: String = "Info", withMessage: String, action: (() -> Void)? = nil) {
