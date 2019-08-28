@@ -19,7 +19,7 @@ The following features are provided by this app
 7. BookDetailsViewController - Maintains the logic to view book details such as Image thumbnail, title and description as provided by the Google Books API. Also displays an Add to Library button which upon clicking adds the book to the library and takes them back to the MyLibraryViewController
 
 # How to build/compile
-1. git clone https://github.com/vedarths/bibliov2
+1. git clone git@github.com:vedarths/bibliov2.git
 2. pod init
 3. pod install
 4. Open the BiblioV2.xcworkspace file in Xcode, type the commands pod init choose a desired simulator device and click on the Run button which should bring up the Login screen.
