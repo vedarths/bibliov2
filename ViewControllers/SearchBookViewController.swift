@@ -43,8 +43,11 @@ class SearchBookViewController: UIViewController {
             showError(message: "Please enter a valid title", dismissButtonTitle: "OK")
             return
         }
+        let viewManager = ViewManager()
+        viewManager.showView(view: self.view)
         BookClient.sharedInstance().findBy(title: title) { (bookVolumeParsed, error) in
             performUIUpdatesOnMain {
+                viewManager.hideDefaultView()
                 if let bookVolumeParsed = bookVolumeParsed {
                     self.totalTitles = bookVolumeParsed.totalItems
                     self.bookItems = bookVolumeParsed.items!
@@ -69,8 +72,6 @@ class SearchBookViewController: UIViewController {
         searchResultsVc.bookItems = self.bookItems
         searchResultsVc.searchTitle = self.titleTextField.text
         searchResultsVc.person = person
-         let viewManager = ViewManager()
-        viewManager.showView(view: searchResultsVc.view)
         present(searchResultsVc, animated: true, completion: nil)
     }
 }
