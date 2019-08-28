@@ -21,7 +21,7 @@ public class ViewManager {
         activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
         activityIndicator.center = defaultView.center
         defaultView.addSubview(activityIndicator)
-        activityIndicator.stopAnimating()
+        activityIndicator.startAnimating()
         view.addSubview(defaultView)
     }
     
