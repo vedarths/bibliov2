@@ -22,7 +22,7 @@ The following features are provided by this app
 1. git clone git@github.com:vedarths/bibliov2.git
 2. pod init
 3. pod install
-4. Open the BiblioV2.xcworkspace file in Xcode, type the commands pod init choose a desired simulator device and click on the Run button which should bring up the Login screen.
+4. Open the BiblioV2.xcworkspace file in Xcode, choose a desired simulator device and click on the Run button which should bring up the Login screen.
 
 # Requirements
 Xcode 9.2
